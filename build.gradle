@@ -5,13 +5,53 @@ plugins {
 group = 'org.example'
 version = '1.0-SNAPSHOT'
 
+sourceSets {
+    main {
+        java {
+            java.srcDirs("src/main/java")
+        }
+        resources {
+            resources.srcDirs("src/main/resources")
+        }
+    }
+    test {
+        java {
+            java.srcDirs("src/test/java")
+        }
+        resources {
+            resources.srcDirs("src/test/resources")
+        }
+    }
+}
+
 repositories {
     mavenCentral()
+}
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+processTestResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.hamcrest:hamcrest-library:2.2'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation 'org.mockito:mockito-all:1.10.19'
+
+    implementation 'com.opencsv:opencsv:5.5.2'
+    implementation 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'org.slf4j:slf4j-simple:1.7.30'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'org.apache.commons:commons-collections4:4.4'
+    implementation 'commons-codec:commons-codec:1.15'
+    implementation 'org.apache.lucene:lucene-core:8.10.1'
+    implementation 'org.apache.lucene:lucene-analyzers-common:8.10.1'
 }
 
 test {
