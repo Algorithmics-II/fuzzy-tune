@@ -1,10 +1,9 @@
-package org.example.objects;
+package org.example.proyect.objects;
 
 import org.example.fuzzy_matcher.domain.Document;
 import org.example.fuzzy_matcher.domain.Element;
 import org.example.fuzzy_matcher.domain.ElementType;
 
-import java.util.List;
 
 public class Music {
   private int id;

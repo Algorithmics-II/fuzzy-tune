@@ -2,7 +2,7 @@ package objects.music;
 
 import org.example.fuzzy_matcher.domain.Element;
 import org.example.fuzzy_matcher.domain.Token;
-import org.example.objects.Music;
+import org.example.proyect.objects.Music;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -4,19 +4,17 @@ import org.example.fuzzy_matcher.component.ElementMatch;
 import org.example.fuzzy_matcher.domain.Document;
 import org.example.fuzzy_matcher.domain.Element;
 import org.example.fuzzy_matcher.domain.Match;
-import org.example.objects.Music;
-import org.example.objects.User;
+import org.example.proyect.objects.Music;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.example.fuzzy_matcher.domain.ElementType.TEXT;
 
-public class MatchElementMusic {
+public class MatchElementMusicTest {
     private ElementMatch elementMatch = new ElementMatch();
     AtomicInteger atomicInteger = new AtomicInteger();
     private Music music;
