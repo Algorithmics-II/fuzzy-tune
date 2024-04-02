@@ -2,9 +2,9 @@ package usb.finalproject.core.objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.example.fuzzy_matcher.domain.Document;
-import org.example.fuzzy_matcher.domain.Element;
-import org.example.fuzzy_matcher.domain.ElementType;
+import usb.finalproject.fuzzy.matcher.domain.Document;
+import usb.finalproject.fuzzy.matcher.domain.Element;
+import usb.finalproject.fuzzy.matcher.domain.ElementType;
 
 import java.util.List;
 
@@ -129,5 +129,19 @@ public class User {
 
     public List<String> getRecentlyPlayed() {
         return this.recentlyPlayed;
+    }
+
+    @Override
+    public String toString() {
+        String userInformation =
+                "User:\n" +
+                        " Name: " + name + "\n" +
+                        " Age: " + age + "\n" +
+                        " Favorite Genres: " + (favoriteGenres != null ? favoriteGenres : "N/A") + "\n" +
+                        " Favorite Artists: " + (favoriteArtists != null ? favoriteArtists : "N/A") + "\n" +
+                        " Favorite Songs: " + (favoriteSongs != null ? favoriteSongs : "N/A") + "\n" +
+                        " Recently Played: " + (recentlyPlayed != null ? recentlyPlayed : "N/A");
+
+        return userInformation;
     }
 }
