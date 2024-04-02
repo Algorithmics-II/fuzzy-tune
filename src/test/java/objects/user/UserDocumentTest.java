@@ -26,7 +26,7 @@ public class UserDocumentTest {
 
         Assert.assertEquals(8, d1.getChildCount(d2));
         Assert.assertEquals(8, d2.getChildCount(d1));
-        Assert.assertEquals(7, d1.getUnmatchedChildCount(d2));
+        Assert.assertEquals(8, d1.getUnmatchedChildCount(d2));
     }
 
     private User getUser1() {

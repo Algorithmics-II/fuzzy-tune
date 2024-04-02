@@ -3,6 +3,10 @@ package org.example.proyect.utils;
 import org.example.proyect.objects.User;
 
 public class Printer {
+    /**
+     * This method prints the user information.
+     * @param user User to print
+     */
     public static void printUser(User user) {
         System.out.println("User recommended: " + user.getName());
         System.out.println("User favorites genres: " + user.getFavoriteGenres());
