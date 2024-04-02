@@ -13,11 +13,11 @@ public class Music {
   @JsonProperty("track_name")
   private String trackName;
   @JsonProperty("artist_name(s)")
-  private String artistNames;
+  private String artistName;
   @JsonProperty("album_name")
   private String albumName;
   @JsonProperty("album_artist_name(s)")
-  private String albumArtistNames;
+  private String albumArtistName;
   @JsonProperty("album_release_date")
   private String albumReleaseDate;
   @JsonProperty("album_image_url")
@@ -46,17 +46,17 @@ public class Music {
   public Music() {
   }
 
-  public Music(int id, String trackName, String artistNames, String albumName,
-               String albumArtistNames, String albumReleaseDate, String albumImageUrl,
+  public Music(int id, String trackName, String artistName, String albumName,
+               String albumArtistName, String albumReleaseDate, String albumImageUrl,
                String artistGenres, int discNumber, int trackNumber, long trackDurationMs,
                boolean explicit, int popularity, double danceability, double energy,
                double speechiness, double acousticness, double instrumentalness,
                double liveness, double valence, String trackPreviewUrl) {
     this.id = id;
     this.trackName = trackName;
-    this.artistNames = artistNames;
+    this.artistName = artistName;
     this.albumName = albumName;
-    this.albumArtistNames = albumArtistNames;
+    this.albumArtistName = albumArtistName;
     this.albumReleaseDate = albumReleaseDate;
     this.albumImageUrl = albumImageUrl;
     this.artistGenres = artistGenres;
@@ -84,9 +84,9 @@ public class Music {
     Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
 
     documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(this.trackName).createElement());
-    documentBuilder.addElement(new Element.Builder().setType(ElementType.NAME).setValue(this.artistNames).createElement());
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.NAME).setValue(this.artistName).createElement());
     documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(this.albumName).createElement());
-    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(this.albumArtistNames).createElement());
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(this.albumArtistName).createElement());
     documentBuilder.addElement(new Element.Builder().setType(ElementType.DATE).setValue(this.albumReleaseDate).createElement());
     documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(this.artistGenres).createElement());
     documentBuilder.addElement(new Element.Builder().setType(ElementType.NUMBER).setValue(this.discNumber).createElement());
@@ -138,16 +138,16 @@ public class Music {
     return this.trackName;
   }
 
-  public String getArtistNames() {
-    return this.artistNames;
+  public String getArtistName() {
+    return this.artistName;
   }
 
   public String getAlbumName() {
     return this.albumName;
   }
 
-  public String getAlbumArtistNames() {
-    return this.albumArtistNames;
+  public String getAlbumArtistName() {
+    return this.albumArtistName;
   }
 
   public String getAlbumReleaseDate() {
