@@ -4,25 +4,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class MusicTest {
   private Music music1;
-  private List<String> artistGenres;
 
   @Before
   public void setUp() {
-    artistGenres = new ArrayList<>();
-    artistGenres.add("Classic");
-    artistGenres.add("Musical");
-
     music1 = new Music(1, "Alone Again", "Gilbert O'Sullivan",
             "Vacation", "Summer", "2023-08-21",
-            "http://album.png", artistGenres, 1, 3,
+            "http://album.png", "Classic, Musical", 1, 3,
             2400, true, 1, 0.866, 0.921,
             0.2, 0.7, 0.34537, 0.23, 1.0,
             "http://song.mp4");
@@ -65,9 +57,7 @@ public class MusicTest {
 
   @Test
   public void getArtistGenresTest() {
-    assertEquals(2, music1.getArtistGenres().size());
-    assertEquals("Classic", music1.getArtistGenres().get(0));
-    assertEquals("Musical", music1.getArtistGenres().get(1));
+    assertEquals("Classic, Musical", music1.getArtistGenres());
   }
 
   @Test
@@ -145,7 +135,7 @@ public class MusicTest {
              Album Artist Name: Summer
              Album Release Date: 2023-08-21
              Album ImageUrl: http://album.png
-             Artist Genres: [Classic, Musical]
+             Artist Genres: Classic, Musical
              Disc Number: 1
              Track Number: 3
              Track Duration(ms): 2400
@@ -166,6 +156,5 @@ public class MusicTest {
   @After
   public void tearDown() {
     music1 = null;
-    artistGenres.clear();
   }
 }
