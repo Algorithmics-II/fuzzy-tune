@@ -11,6 +11,9 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.*;
+import static usb.finalproject.fuzzy.matcher.function.TokenizerFunction.*;
+
 public class TokenizerFunctionTest {
     @Test
     public void itShouldGetNGramTokenizer_Success(){

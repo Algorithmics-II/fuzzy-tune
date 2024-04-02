@@ -1,11 +1,9 @@
 package usb.finalproject.fuzzy.matcher.component;
 
-
 import usb.finalproject.fuzzy.matcher.domain.Document;
 import usb.finalproject.fuzzy.matcher.domain.Element;
 import usb.finalproject.fuzzy.matcher.domain.Match;
 import usb.finalproject.fuzzy.matcher.domain.Score;
-import org.example.fuzzy_matcher.domain.*;
 import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.*;
@@ -72,5 +70,4 @@ public class DocumentMatch {
 
         return result;
     }
-
 }

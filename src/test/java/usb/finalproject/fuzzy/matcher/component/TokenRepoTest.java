@@ -1,6 +1,5 @@
 package usb.finalproject.fuzzy.matcher.component;
 
-import usb.finalproject.fuzzy.matcher.component.TokenRepo;
 import usb.finalproject.fuzzy.matcher.domain.*;
 import usb.finalproject.fuzzy.matcher.exception.MatchException;
 import org.junit.Assert;

@@ -1,8 +1,9 @@
 package usb.finalproject.fuzzy.matcher.domain;
 
-
 import java.util.function.Function;
 
+import static usb.finalproject.fuzzy.matcher.domain.MatchType.EQUALITY;
+import static usb.finalproject.fuzzy.matcher.domain.MatchType.NEAREST_NEIGHBORS;
 import static usb.finalproject.fuzzy.matcher.function.PreProcessFunction.*;
 import static usb.finalproject.fuzzy.matcher.function.TokenizerFunction.*;
 
@@ -63,9 +64,9 @@ public enum ElementType {
             case NUMBER:
             case DATE:
             case AGE:
-                return MatchType.NEAREST_NEIGHBORS;
+                return NEAREST_NEIGHBORS;
             default:
-                return MatchType.EQUALITY;
+                return EQUALITY;
         }
     }
 }

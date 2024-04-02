@@ -1,6 +1,5 @@
 package usb.finalproject.fuzzy.matcher.component;
 
-import usb.finalproject.fuzzy.matcher.component.ElementMatch;
 import usb.finalproject.fuzzy.matcher.domain.Document;
 import usb.finalproject.fuzzy.matcher.domain.Element;
 import usb.finalproject.fuzzy.matcher.domain.ElementType;
@@ -10,6 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.NAME;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.ADDRESS;
 
 public class ElementMatchTest {
     private ElementMatch elementMatch = new ElementMatch();

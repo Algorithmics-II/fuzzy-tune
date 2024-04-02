@@ -1,9 +1,6 @@
 package usb.finalproject.fuzzy.matcher.domain;
 
-import usb.finalproject.fuzzy.matcher.component.MatchService;
-import usb.finalproject.fuzzy.matcher.domain.Document;
-import usb.finalproject.fuzzy.matcher.domain.Element;
-import usb.finalproject.fuzzy.matcher.domain.Match;
+import usb.finalproject.fuzzy.matcher.component.*;
 import usb.finalproject.fuzzy.matcher.function.TokenizerFunction;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -14,6 +11,8 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.NAME;
 
 public class ElementTest {
     MatchService matchService = new MatchService();

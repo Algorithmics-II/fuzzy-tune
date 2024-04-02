@@ -23,6 +23,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.*;
+
 public class MatchServicePerfTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(MatchServiceTest.class);
 

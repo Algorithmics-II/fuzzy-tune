@@ -1,7 +1,6 @@
 package usb.finalproject.fuzzy.matcher.function;
 
 import usb.finalproject.fuzzy.matcher.domain.Element;
-import usb.finalproject.fuzzy.matcher.function.PreProcessFunction;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +9,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.function.Function;
+
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.ADDRESS;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.NAME;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.TEXT;
 
 public class PreProcessFunctionTest {
     @Test
@@ -77,21 +80,21 @@ public class PreProcessFunctionTest {
     @Test
     public void itShouldRemoveSpecialCharPhone_Success(){
         String value = "+1-(123)-456-4345";
-        String result = (String)PreProcessFunction.removeSpecialChars().apply(value);
+        String result = (String) PreProcessFunction.removeSpecialChars().apply(value);
         Assert.assertEquals("11234564345", result);
     }
 
     @Test
     public void itShouldApplyNumberPreprocessing_Success(){
         String value = "$ value -34.76";
-        String result = (String)PreProcessFunction.numberPreprocessing().apply(value);
+        String result = (String) PreProcessFunction.numberPreprocessing().apply(value);
         Assert.assertEquals("-34.76",result);
     }
 
     @Test
     public void itShouldApplyNumberPreprocessing_Failure(){
         String value = "$ value thirty four";
-        String result = (String)PreProcessFunction.numberPreprocessing().apply(value);
+        String result = (String) PreProcessFunction.numberPreprocessing().apply(value);
         Assert.assertEquals(value, result);
     }
 
