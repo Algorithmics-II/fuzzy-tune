@@ -3,6 +3,7 @@ package org.example.proyect.recommendation;
 import org.example.fuzzy_matcher.component.MatchService;
 import org.example.fuzzy_matcher.domain.*;
 import org.example.proyect.objects.User;
+import org.example.proyect.utils.Printer;
 
 import java.util.Comparator;
 import java.util.List;
@@ -34,11 +35,7 @@ public class UserMatcher {
         for (Document document : recommendedUsers) {
             for (User user: users) {
                 if (document.getKey().equals(String.valueOf(user.getId()))) {
-                    System.out.println("User recommended: " + user.getName());
-                    System.out.println("User favorites genres: " + user.getFavoriteGenres());
-                    System.out.println("User favorite artists: " + user.getFavoriteArtists());
-                    System.out.println("User favorite songs: " + user.getFavoriteSongs());
-                    System.out.println("User recently played: " + user.getRecentlyPlayed());
+                    Printer.printUser(user);
                 }
             }
             System.out.println("--------------------");
