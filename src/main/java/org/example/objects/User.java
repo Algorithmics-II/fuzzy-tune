@@ -11,6 +11,10 @@ public class User {
   private List<String> favoriteSongs;
   private List<String> recentlyPlayed;
 
+
+  public User() {
+  }
+
   public User(int id, String name, int age, List<String> favoriteGenres,
               List<String> favoriteArtists, List<String> favoriteSongs,
               List<String> recentlyPlayed) {
