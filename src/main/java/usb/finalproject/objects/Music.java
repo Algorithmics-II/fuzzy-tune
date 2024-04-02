@@ -137,4 +137,32 @@ public class Music {
   public String getTrackPreviewUrl() {
     return this.trackPreviewUrl;
   }
+
+  @Override
+  public String toString() {
+    String songInformation =
+            "Music:\n" +
+                    " Track Name: " + (trackName != null ? trackName : "N/A") + "\n" +
+                    " Artist Name: " + (artistName != null ? artistName : "N/A") + "\n" +
+                    " Album Name: " + (albumName != null ? albumName : "N/A") + "\n" +
+                    " Album Artist Name: " + (albumArtistName != null ? albumArtistName : "N/A") + "\n" +
+                    " Album Release Date: " + (albumReleaseDate != null ? albumReleaseDate : "N/A") + "\n" +
+                    " Album ImageUrl: " + (albumImageUrl != null ? albumImageUrl : "N/A") + "\n" +
+                    " Artist Genres: " + (artistGenres != null ? artistGenres : "N/A") + "\n" +
+                    " Disc Number: " + discNumber + "\n" +
+                    " Track Number: " + trackNumber + "\n" +
+                    " Track Duration(ms): " + trackDurationMs + "\n" +
+                    " Explicit: " + explicit + "\n" +
+                    " Popularity: " + popularity + "\n" +
+                    " Danceability: " + danceability + "\n" +
+                    " Energy: " + energy + "\n" +
+                    " Speechiness: " + speechiness + "\n" +
+                    " Acousticness: " + acousticness + "\n" +
+                    " Instrumentalness: " + instrumentalness + "\n" +
+                    " Liveness: " + liveness + "\n" +
+                    " Valence: " + valence + "\n" +
+                    " Track Preview URL: " + (trackPreviewUrl != null ? trackPreviewUrl : "N/A");
+
+    return songInformation;
+  }
 }

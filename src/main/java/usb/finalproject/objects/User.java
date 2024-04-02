@@ -50,4 +50,18 @@ public class User {
   public List<String> getRecentlyPlayed() {
     return this.recentlyPlayed;
   }
+
+  @Override
+  public String toString() {
+    String userInformation =
+            "User:\n" +
+            " Name: " + name + "\n" +
+            " Age: " + age + "\n" +
+            " Favorite Genres: " + (favoriteGenres != null ? favoriteGenres : "N/A") + "\n" +
+            " Favorite Artists: " + (favoriteArtists != null ? favoriteArtists : "N/A") + "\n" +
+            " Favorite Songs: " + (favoriteSongs != null ? favoriteSongs : "N/A") + "\n" +
+            " Recently Played: " + (recentlyPlayed != null ? recentlyPlayed : "N/A");
+
+    return userInformation;
+  }
 }
