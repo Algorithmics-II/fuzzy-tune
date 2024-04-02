@@ -51,4 +51,88 @@ public class Music {
     this.valence = valence;
     this.trackPreviewUrl = trackPreviewUrl;
   }
+
+  public int getId() {
+    return this.id;
+  }
+
+  public String getTrackName() {
+    return this.trackName;
+  }
+
+  public String getArtistNames() {
+    return this.artistNames;
+  }
+
+  public String getAlbumName() {
+    return this.albumName;
+  }
+
+  public String getAlbumArtistNames() {
+    return this.albumArtistNames;
+  }
+
+  public String getAlbumReleaseDate() {
+    return this.albumReleaseDate;
+  }
+
+  public String getAlbumImageUrl() {
+    return this.albumImageUrl;
+  }
+
+  public String getArtistGenres() {
+    return this.artistGenres;
+  }
+
+  public int getDiscNumber() {
+    return this.discNumber;
+  }
+
+  public int getTrackNumber() {
+    return this.trackNumber;
+  }
+
+  public long getTrackDurationMs() {
+    return this.trackDurationMs;
+  }
+
+  public boolean isExplicit() {
+    return this.explicit;
+  }
+
+  public int getPopularity() {
+    return this.popularity;
+  }
+
+  public double getDanceability() {
+    return this.danceability;
+  }
+
+  public double getEnergy() {
+    return this.energy;
+  }
+
+  public double getSpeechiness() {
+    return this.speechiness;
+  }
+
+  public double getAcousticness() {
+    return this.acousticness;
+  }
+
+  public double getInstrumentalness() {
+    return this.instrumentalness;
+  }
+
+  public double getLiveness() {
+    return this.liveness;
+  }
+
+  public double getValence() {
+    return this.valence;
+  }
+
+  public String getTrackPreviewUrl() {
+    return this.trackPreviewUrl;
+  }
 }
