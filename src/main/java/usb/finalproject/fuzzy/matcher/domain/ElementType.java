@@ -1,8 +1,9 @@
 package usb.finalproject.fuzzy.matcher.domain;
 
-
 import java.util.function.Function;
 
+import static usb.finalproject.fuzzy.matcher.domain.MatchType.EQUALITY;
+import static usb.finalproject.fuzzy.matcher.domain.MatchType.NEAREST_NEIGHBORS;
 import static usb.finalproject.fuzzy.matcher.function.PreProcessFunction.*;
 import static usb.finalproject.fuzzy.matcher.function.TokenizerFunction.*;
 
@@ -63,20 +64,9 @@ public enum ElementType {
      * @return The match type for this element type.
      */
     protected MatchType getMatchType() {
-<<<<<<< HEAD:src/main/java/org/example/fuzzy_matcher/domain/ElementType.java
         return switch (this) {
             case NUMBER, DATE, AGE -> NEAREST_NEIGHBORS;
             default -> EQUALITY;
         };
-=======
-        switch (this) {
-            case NUMBER:
-            case DATE:
-            case AGE:
-                return MatchType.NEAREST_NEIGHBORS;
-            default:
-                return MatchType.EQUALITY;
-        }
->>>>>>> 2f7d881 (refactor: update directory name):src/main/java/usb/finalproject/fuzzy/matcher/domain/ElementType.java
     }
 }

@@ -1,6 +1,5 @@
 package usb.finalproject.fuzzy.matcher.component;
 
-
 import usb.finalproject.fuzzy.matcher.domain.Document;
 import usb.finalproject.fuzzy.matcher.domain.Element;
 import usb.finalproject.fuzzy.matcher.domain.Match;
@@ -84,5 +83,4 @@ public class DocumentMatch {
 
         return result;
     }
-
 }

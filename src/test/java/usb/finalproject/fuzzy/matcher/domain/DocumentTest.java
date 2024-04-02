@@ -1,11 +1,12 @@
 package usb.finalproject.fuzzy.matcher.domain;
 
-import usb.finalproject.fuzzy.matcher.domain.Document;
-import usb.finalproject.fuzzy.matcher.domain.Element;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import static usb.finalproject.fuzzy.matcher.domain.ElementType.*;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.ADDRESS;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.EMAIL;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.NAME;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.PHONE;
 
 public class DocumentTest {
     @Test

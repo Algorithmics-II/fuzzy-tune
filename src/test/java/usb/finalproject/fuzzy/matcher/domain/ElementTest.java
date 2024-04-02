@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static usb.finalproject.fuzzy.matcher.domain.ElementType.*;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.NAME;
 
 public class ElementTest {
     MatchService matchService = new MatchService();

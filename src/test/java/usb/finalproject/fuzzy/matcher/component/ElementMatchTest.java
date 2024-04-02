@@ -1,10 +1,6 @@
 package usb.finalproject.fuzzy.matcher.component;
 
-import usb.finalproject.fuzzy.matcher.component.ElementMatch;
-import usb.finalproject.fuzzy.matcher.domain.Document;
-import usb.finalproject.fuzzy.matcher.domain.Element;
-import usb.finalproject.fuzzy.matcher.domain.ElementType;
-import usb.finalproject.fuzzy.matcher.domain.Match;
+import usb.finalproject.fuzzy.matcher.domain.*;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
