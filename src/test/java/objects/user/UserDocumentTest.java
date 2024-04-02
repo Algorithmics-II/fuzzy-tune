@@ -1,15 +1,16 @@
 package objects.user;
 
-import org.example.fuzzy_matcher.domain.Document;
-import org.example.fuzzy_matcher.domain.Element;
-import org.example.proyect.objects.User;
+import usb.finalproject.core.objects.User;
+import usb.finalproject.fuzzy.matcher.domain.Document;
+import usb.finalproject.fuzzy.matcher.domain.Element;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.example.fuzzy_matcher.domain.ElementType.*;
-import static org.example.fuzzy_matcher.domain.ElementType.EMAIL;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.*;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.EMAIL;
 
 public class UserDocumentTest {
     @Test

@@ -1,8 +1,9 @@
 package objects.user;
 
-import org.example.fuzzy_matcher.component.MatchService;
-import org.example.fuzzy_matcher.domain.*;
-import org.example.proyect.objects.User;
+import usb.finalproject.core.objects.User;
+import usb.finalproject.fuzzy.matcher.component.MatchService;
+import usb.finalproject.fuzzy.matcher.domain.*;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 

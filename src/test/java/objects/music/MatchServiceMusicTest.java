@@ -1,8 +1,9 @@
 package objects.music;
 
-import org.example.fuzzy_matcher.component.MatchService;
-import org.example.fuzzy_matcher.domain.Document;
-import org.example.proyect.objects.Music;
+import usb.finalproject.core.objects.Music;
+import usb.finalproject.fuzzy.matcher.component.MatchService;
+import usb.finalproject.fuzzy.matcher.domain.Document;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

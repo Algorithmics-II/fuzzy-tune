@@ -1,10 +1,12 @@
 package objects.user;
 
-import org.example.fuzzy_matcher.component.ElementMatch;
-import org.example.fuzzy_matcher.domain.Document;
-import org.example.fuzzy_matcher.domain.Element;
-import org.example.fuzzy_matcher.domain.Match;
-import org.example.proyect.objects.User;
+import usb.finalproject.core.objects.User;
+
+import usb.finalproject.fuzzy.matcher.component.ElementMatch;
+import usb.finalproject.fuzzy.matcher.domain.Document;
+import usb.finalproject.fuzzy.matcher.domain.Element;
+import usb.finalproject.fuzzy.matcher.domain.Match;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +15,7 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static org.example.fuzzy_matcher.domain.ElementType.TEXT;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.TEXT;
 
 public class MatchElementUserTest {
     private ElementMatch elementMatch = new ElementMatch();

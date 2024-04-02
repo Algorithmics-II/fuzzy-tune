@@ -1,13 +1,13 @@
 package objects.music;
 
-import org.example.fuzzy_matcher.domain.Document;
-import org.example.fuzzy_matcher.domain.Element;
-import org.example.proyect.objects.Music;
+import usb.finalproject.core.objects.Music;
+import usb.finalproject.fuzzy.matcher.domain.Document;
+import usb.finalproject.fuzzy.matcher.domain.Element;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-
-import static org.example.fuzzy_matcher.domain.ElementType.*;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.*;
 
 public class MusicDocumentTest {
     @Test

@@ -1,8 +1,10 @@
 package objects.user;
 
-import org.example.fuzzy_matcher.domain.Element;
-import org.example.fuzzy_matcher.domain.Token;
-import org.example.proyect.objects.User;
+import usb.finalproject.core.objects.User;
+
+import usb.finalproject.fuzzy.matcher.domain.Element;
+import usb.finalproject.fuzzy.matcher.domain.Token;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,8 +14,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.example.fuzzy_matcher.domain.ElementType.*;
-import static org.example.fuzzy_matcher.function.TokenizerFunction.*;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.*;
+import static usb.finalproject.fuzzy.matcher.function.TokenizerFunction.*;
 
 public class TokenizerUserFunctionTest {
 

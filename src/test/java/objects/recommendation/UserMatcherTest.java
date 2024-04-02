@@ -1,13 +1,14 @@
 package objects.recommendation;
 
-import dataReader.DataReader;
-import org.example.fuzzy_matcher.component.MatchService;
-import org.example.fuzzy_matcher.domain.Document;
-import org.example.proyect.objects.Music;
-import org.example.proyect.objects.MusicList;
-import org.example.proyect.objects.User;
-import org.example.proyect.objects.UserList;
-import org.example.proyect.recommendation.UserMatcher;
+import usb.finalproject.utils.DataReader;
+import usb.finalproject.fuzzy.matcher.component.MatchService;
+import usb.finalproject.fuzzy.matcher.domain.Document;
+import usb.finalproject.core.objects.Music;
+import usb.finalproject.core.objects.MusicList;
+import usb.finalproject.core.objects.User;
+import usb.finalproject.core.objects.UserList;
+import usb.finalproject.core.recommendation.UserMatcher;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 

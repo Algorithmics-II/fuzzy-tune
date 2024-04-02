@@ -1,9 +1,8 @@
 package objects.music;
 
-import dataReader.DataReader;
-import org.example.proyect.objects.Music;
-import org.example.proyect.objects.MusicList;
-import org.junit.jupiter.api.Assertions;
+import usb.finalproject.utils.DataReader;
+import usb.finalproject.core.objects.Music;
+import usb.finalproject.core.objects.MusicList;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;

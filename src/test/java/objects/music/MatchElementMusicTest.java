@@ -1,10 +1,11 @@
 package objects.music;
 
-import org.example.fuzzy_matcher.component.ElementMatch;
-import org.example.fuzzy_matcher.domain.Document;
-import org.example.fuzzy_matcher.domain.Element;
-import org.example.fuzzy_matcher.domain.Match;
-import org.example.proyect.objects.Music;
+import usb.finalproject.core.objects.Music;
+import usb.finalproject.fuzzy.matcher.component.ElementMatch;
+import usb.finalproject.fuzzy.matcher.domain.Document;
+import usb.finalproject.fuzzy.matcher.domain.Element;
+import usb.finalproject.fuzzy.matcher.domain.Match;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static org.example.fuzzy_matcher.domain.ElementType.TEXT;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.TEXT;
 
 public class MatchElementMusicTest {
     private ElementMatch elementMatch = new ElementMatch();
