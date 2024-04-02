@@ -10,14 +10,29 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
+/**
+ * The `TokenRepo` class is used for storing and retrieving tokens and elements.
+ */
 public class TokenRepo {
 
     private Map<ElementClassification, Repo> repoMap;
 
+    /**
+     * This is the constructor of the `TokenRepo` class.
+     * It initializes a new instance of the `TokenRepo` class with an empty repository map.
+     */
     public TokenRepo() {
         this.repoMap = new ConcurrentHashMap<>();
     }
 
+    /**
+     * This method adds a token to the repository.
+     * It first gets the element classification of the token and retrieves the corresponding repository from the repository map.
+     * If the repository does not exist, it creates a new repository with the match type of the element of the token and adds it to the repository map.
+     * Then, it adds the token and its element to the repository.
+     *
+     * @param token The token to be added.
+     */
     public void put(Token token) {
 
         ElementClassification elementClassification = token.getElement().getElementClassification();
@@ -30,6 +45,15 @@ public class TokenRepo {
         repo.put(token, token.getElement());
     }
 
+    /**
+     * This method retrieves a set of elements associated with a token from the repository.
+     * It first gets the element classification of the token and retrieves the corresponding repository from the repository map.
+     * If the repository exists, it returns the set of elements associated with the token in the repository.
+     * Otherwise, it returns null.
+     *
+     * @param token The token.
+     * @return A set of elements associated with the token, or null if the repository does not exist.
+     */
     public Set<Element> get(Token token) {
         Repo repo = repoMap.get(token.getElement().getElementClassification());
         if (repo != null) {
@@ -38,6 +62,10 @@ public class TokenRepo {
         return null;
     }
 
+    /**
+     * The `Repo` class is a private inner class of the `TokenRepo` class.
+     * It represents a repository for tokens and elements.
+     */
     private class Repo {
 
         MatchType matchType;
@@ -49,7 +77,12 @@ public class TokenRepo {
         private final Double AGE_PCT_OF = 10D;
         private final Double DATE_PCT_OF = 15777e7D; // 5 years of range
 
-
+        /**
+         * This is the constructor of the `Repo` class.
+         * It initializes a new instance of the `Repo` class with the specified match type.
+         *
+         * @param matchType The match type.
+         */
         Repo(MatchType matchType) {
             this.matchType = matchType;
             switch (matchType) {
@@ -60,6 +93,14 @@ public class TokenRepo {
             }
         }
 
+        /**
+         * This method adds a token and an element to the repository.
+         * If the match type is `NEAREST_NEIGHBORS`, it adds the value of the token to the binary tree.
+         * If the match type is `EQUALITY`, it adds the element to the set of elements associated with the value of the token in the map.
+         *
+         * @param token   The token to be added.
+         * @param element The element to be added.
+         */
         void put(Token token, Element element) {
             switch (matchType) {
                 case NEAREST_NEIGHBORS:
@@ -71,13 +112,21 @@ public class TokenRepo {
             }
         }
 
+        /**
+         * This method gets a set of elements associated with a token from the repository.
+         * If the match type is `EQUALITY`, it returns the set of elements associated with the value of the token in the map.
+         * If the match type is `NEAREST_NEIGHBORS`, it returns a set of elements associated with the values in the binary tree that are within the neighborhood range of the value of the token.
+         *
+         * @param token The token.
+         * @return A set of elements associated with the token.
+         */
         Set<Element> get(Token token) {
             switch (matchType) {
                 case EQUALITY:
                     return tokenElementSet.get(token.getValue());
                 case NEAREST_NEIGHBORS:
                     TokenRange tokenRange;
-                    switch (token.getElement().getElementClassification().getElementType()){
+                    switch (token.getElement().getElementClassification().getElementType()) {
                         case AGE:
                             tokenRange = new TokenRange(token, token.getElement().getNeighborhoodRange(), AGE_PCT_OF);
                             break;
@@ -96,11 +145,23 @@ public class TokenRepo {
         }
     }
 
+    /**
+     * The `TokenRange` class is a private inner class of the `Repo` class.
+     * It represents a range of values for a token.
+     */
     private class TokenRange {
 
         private final Object lower;
         private final Object higher;
 
+        /**
+         * This is the constructor of the `TokenRange` class.
+         * It initializes a new instance of the `TokenRange` class with the specified token, percentage, and percentage of value.
+         *
+         * @param token The token.
+         * @param pct   The percentage.
+         * @param pctOf The percentage of value.
+         */
         TokenRange(Token token, double pct, Double pctOf) {
             Object value = token.getValue();
             if (value instanceof Double) {
@@ -123,10 +184,25 @@ public class TokenRepo {
             }
         }
 
+        /**
+         * This is another constructor of the `TokenRange` class.
+         * It initializes a new instance of the `TokenRange` class with the specified token and percentage.
+         *
+         * @param token The token.
+         * @param pct   The percentage.
+         */
         TokenRange(Token token, double pct) {
             this(token, pct, null);
         }
 
+        /**
+         * This method calculates the lower bound of the range for a given number, percentage, and percentage of value.
+         *
+         * @param number The number.
+         * @param pct    The percentage.
+         * @param pctOf  The percentage of value.
+         * @return The lower bound of the range.
+         */
         private Number getLower(Number number, double pct, Double pctOf) {
             Double dnum = number.doubleValue();
             Double dPctOf = pctOf != null ? pctOf : dnum;
@@ -134,6 +210,14 @@ public class TokenRepo {
             return dnum - pctVal;
         }
 
+        /**
+         * This method calculates the higher bound of the range for a given number, percentage, and percentage of value.
+         *
+         * @param number The number.
+         * @param pct    The percentage.
+         * @param pctOf  The percentage of value.
+         * @return The higher bound of the range.
+         */
         private Number getHigher(Number number, double pct, Double pctOf) {
             Double dnum = number.doubleValue();
             Double dPctOf = pctOf != null ? pctOf : dnum;

@@ -43,14 +43,14 @@ public class MatchService {
     public Map<Document, List<Match<Document>>> applyMatch(List<Document> documents, List<Document> matchWith) {
         DocumentMatch documentMatch = new DocumentMatch();
         return documentMatch.matchDocuments(Stream.concat(
-                matchWith.stream().map(document -> {
-                    document.setSource(false);
-                    return document;
-                }),
-                documents.stream().map(document -> {
-                    document.setSource(true);
-                    return document;
-                })))
+                        matchWith.stream().map(document -> {
+                            document.setSource(false);
+                            return document;
+                        }),
+                        documents.stream().map(document -> {
+                            document.setSource(true);
+                            return document;
+                        })))
                 .collect(Collectors.groupingBy(Match::getData));
     }
 
@@ -104,13 +104,13 @@ public class MatchService {
     public Map<String, List<Match<Document>>> applyMatchByDocId(List<Document> documents, List<Document> matchWith) {
         DocumentMatch documentMatch = new DocumentMatch();
         return documentMatch.matchDocuments(Stream.concat(
-                matchWith.stream().map(document -> {
-                    document.setSource(false);
-                    return document;
-                }), documents.stream().map(document -> {
-                    document.setSource(true);
-                    return document;
-                })))
+                        matchWith.stream().map(document -> {
+                            document.setSource(false);
+                            return document;
+                        }), documents.stream().map(document -> {
+                            document.setSource(true);
+                            return document;
+                        })))
                 .collect(Collectors.groupingBy(match -> match.getData().getKey()));
     }
 
@@ -139,6 +139,17 @@ public class MatchService {
         return result;
     }
 
+    /**
+     * This method groups similar matches together.
+     * It first gets the list of matches associated with a key from the match map.
+     * If the list of matches is not null, it removes the key from the match map.
+     * Then, it adds each match to the set of match groups if it does not already contain the match.
+     * Finally, it recursively calls itself with the key of the matched with document and the set of match groups.
+     *
+     * @param matchMap    The map of matches.
+     * @param key         The key.
+     * @param matchGroups The set of match groups.
+     */
     private void groupSimilar(Map<String, List<Match<Document>>> matchMap, String key, Set<Match<Document>> matchGroups) {
         List<Match<Document>> matches = matchMap.get(key);
         if (matches == null) {
@@ -155,6 +166,14 @@ public class MatchService {
         });
     }
 
+    /**
+     * This method checks if a set of match groups contains a match.
+     * It returns true if there is a match in the set of match groups that has the same data key as the matched with key of the match and the same matched with key as the data key of the match.
+     *
+     * @param matchGroups The set of match groups.
+     * @param match       The match.
+     * @return `true` if the set of match groups contains the match, `false` otherwise.
+     */
     private boolean containsMatch(Set<Match<Document>> matchGroups, Match<Document> match) {
         return matchGroups.stream()
                 .anyMatch(m -> m.getData().getKey().equals(match.getMatchedWith().getKey())
