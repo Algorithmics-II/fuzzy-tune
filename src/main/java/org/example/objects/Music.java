@@ -1,5 +1,7 @@
 package org.example.objects;
 
+import java.util.List;
+
 public class Music {
   private int id;
   private String trackName;
@@ -8,7 +10,7 @@ public class Music {
   private String albumArtistNames;
   private String albumReleaseDate;
   private String albumImageUrl;
-  private String artistGenres;
+  private List<String> artistGenres;
   private int discNumber;
   private int trackNumber;
   private long trackDurationMs;
@@ -25,7 +27,7 @@ public class Music {
 
   public Music(int id, String trackName, String artistNames, String albumName,
                String albumArtistNames, String albumReleaseDate, String albumImageUrl,
-               String artistGenres, int discNumber, int trackNumber, long trackDurationMs,
+               List<String> artistGenres, int discNumber, int trackNumber, long trackDurationMs,
                boolean explicit, int popularity, double danceability, double energy,
                double speechiness, double acousticness, double instrumentalness,
                double liveness, double valence, String trackPreviewUrl) {
@@ -80,7 +82,7 @@ public class Music {
     return this.albumImageUrl;
   }
 
-  public String getArtistGenres() {
+  public List<String> getArtistGenres() {
     return this.artistGenres;
   }
 
