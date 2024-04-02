@@ -74,7 +74,8 @@ public class Music {
     documentBuilder.addElement(new Element.Builder().setType(ElementType.NUMBER).setValue(this.discNumber).createElement());
     documentBuilder.addElement(new Element.Builder().setType(ElementType.NUMBER).setValue(this.trackNumber).createElement());
     documentBuilder.addElement(new Element.Builder().setType(ElementType.NUMBER).setValue(this.trackDurationMs).createElement());
-    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(this.explicit).createElement());
+    // Implement method for boolean values
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.valueOf(this.explicit)).createElement());
     documentBuilder.addElement(new Element.Builder().setType(ElementType.NUMBER).setValue(this.popularity).createElement());
     documentBuilder.addElement(new Element.Builder().setType(ElementType.NUMBER).setValue(this.danceability).createElement());
     documentBuilder.addElement(new Element.Builder().setType(ElementType.NUMBER).setValue(this.energy).createElement());

@@ -1,4 +1,4 @@
-package objects;
+package objects.user;
 
 import org.example.fuzzy_matcher.component.MatchService;
 import org.example.fuzzy_matcher.domain.Document;

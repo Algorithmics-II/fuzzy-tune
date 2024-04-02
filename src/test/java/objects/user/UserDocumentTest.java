@@ -1,4 +1,4 @@
-package objects;
+package objects.user;
 
 import org.example.fuzzy_matcher.domain.Document;
 import org.example.fuzzy_matcher.domain.Element;
@@ -34,14 +34,5 @@ public class UserDocumentTest {
                 Arrays.asList("Justin Timberlake", "Pitbull", "Britney Spears"),
                 Arrays.asList("Justified & Ancient - Stand by the Jams", "I Know You Want Me (Calle Ocho)", "From the Bottom of My Broken Heart"),
                 Arrays.asList("Apeman - 2014 Remastered Version", "You Can't Always Get What You Want", "Don't Stop - 2004 Remaster"));
-    }
-    private Document getUserDocument2() {
-        User user = new User(2, "Jennifer", 32, Arrays.asList("Pop", "Electro", "Classic Rock"),
-                Arrays.asList("Rihanna", "Pitbull", "The Chainsmokers"),
-                Arrays.asList("Listen to the Band - Single Version", "Something About The Way You Look Tonight - Edit Version"),
-                Arrays.asList("Here Without You", "It's Like That", "Don't Stop - 2004 Remaster"));
-
-
-        return user.toDocument();
     }
 }

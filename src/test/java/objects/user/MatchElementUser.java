@@ -1,4 +1,4 @@
-package objects;
+package objects.user;
 
 import org.example.fuzzy_matcher.component.ElementMatch;
 import org.example.fuzzy_matcher.domain.Document;
@@ -31,11 +31,11 @@ public class MatchElementUser {
     public void matchElementFavoritesGenres() {
         String favoriteGenres1 = String.join(" ", user.getFavoriteGenres());
         Element elem = new Element.Builder().setType(TEXT).setValue(favoriteGenres1).createElement();
-        new Document.Builder(atomicInteger.incrementAndGet()+"").addElement(elem).createDocument();
+        new Document.Builder(atomicInteger.incrementAndGet() + "").addElement(elem).createDocument();
 
         String favoriteGenres2 = String.join(" ", user2.getFavoriteGenres());
         Element elem2 = new Element.Builder().setType(TEXT).setValue(favoriteGenres2).createElement();
-        new Document.Builder(atomicInteger.incrementAndGet()+"").addElement(elem2).createDocument();
+        new Document.Builder(atomicInteger.incrementAndGet() + "").addElement(elem2).createDocument();
 
         Set<Match<Element>> matchSet1 = elementMatch.matchElement(elem);
         Assert.assertEquals(0, matchSet1.size());
