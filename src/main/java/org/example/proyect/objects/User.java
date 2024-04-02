@@ -37,7 +37,6 @@ public class User {
     public Document toDocument() {
         Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
 
-        documentBuilder.addElement(new Element.Builder().setType(ElementType.NAME).setValue(this.name).createElement());
         documentBuilder.addElement(new Element.Builder().setType(ElementType.AGE).setValue(this.age).createElement());
         documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteGenres)).createElement());
         documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteArtists)).createElement());

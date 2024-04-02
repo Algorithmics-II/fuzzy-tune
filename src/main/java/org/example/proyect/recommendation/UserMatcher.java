@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 public class UserMatcher {
     private MatchService matchService;
+    private List<Match<Document>> userMatches;
 
     public UserMatcher(MatchService matchService) {
         this.matchService = matchService;
@@ -19,7 +20,7 @@ public class UserMatcher {
 
     public List<Document> getTopMatches(Document userDocument, List<Document> documents, int topN) {
         Map<Document, List<Match<Document>>> matches = matchService.applyMatch(documents);
-        List<Match<Document>> userMatches = matches.get(userDocument);
+        userMatches = matches.get(userDocument);
         userMatches.sort(Comparator.comparing(Match<Document>::getScore, Comparator.comparingDouble(Score::getResult)).reversed());
         return userMatches.stream()
                 .limit(topN)
@@ -32,13 +33,19 @@ public class UserMatcher {
     }
 
     public void printRecommendedUsers(List<Document> recommendedUsers, List<User> users) {
+        int index = 0;
         for (Document document : recommendedUsers) {
             for (User user: users) {
                 if (document.getKey().equals(String.valueOf(user.getId()))) {
                     Printer.printUser(user);
+                    System.out.println("Score match: " + userMatches.get(index++).getScore().getResult());
                 }
             }
             System.out.println("--------------------");
         }
+    }
+
+    public List<Match<Document>> getUserMatches() {
+        return userMatches;
     }
 }
