@@ -5,9 +5,9 @@ import java.util.List;
 public class Music {
   private int id;
   private String trackName;
-  private String artistNames;
+  private String artistName;
   private String albumName;
-  private String albumArtistNames;
+  private String albumArtistName;
   private String albumReleaseDate;
   private String albumImageUrl;
   private List<String> artistGenres;
@@ -25,17 +25,17 @@ public class Music {
   private double valence;
   private String trackPreviewUrl;
 
-  public Music(int id, String trackName, String artistNames, String albumName,
-               String albumArtistNames, String albumReleaseDate, String albumImageUrl,
+  public Music(int id, String trackName, String artistName, String albumName,
+               String albumArtistName, String albumReleaseDate, String albumImageUrl,
                List<String> artistGenres, int discNumber, int trackNumber, long trackDurationMs,
                boolean explicit, int popularity, double danceability, double energy,
                double speechiness, double acousticness, double instrumentalness,
                double liveness, double valence, String trackPreviewUrl) {
     this.id = id;
     this.trackName = trackName;
-    this.artistNames = artistNames;
+    this.artistName = artistName;
     this.albumName = albumName;
-    this.albumArtistNames = albumArtistNames;
+    this.albumArtistName = albumArtistName;
     this.albumReleaseDate = albumReleaseDate;
     this.albumImageUrl = albumImageUrl;
     this.artistGenres = artistGenres;
@@ -62,16 +62,16 @@ public class Music {
     return this.trackName;
   }
 
-  public String getArtistNames() {
-    return this.artistNames;
+  public String getArtistName() {
+    return this.artistName;
   }
 
   public String getAlbumName() {
     return this.albumName;
   }
 
-  public String getAlbumArtistNames() {
-    return this.albumArtistNames;
+  public String getAlbumArtistName() {
+    return this.albumArtistName;
   }
 
   public String getAlbumReleaseDate() {
