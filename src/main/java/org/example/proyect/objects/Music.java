@@ -44,6 +44,7 @@ public class Music {
   private double valence;
   @JsonProperty("track_preview_url")
   private String trackPreviewUrl;
+  private Document documentPreferencesUser;
 
   public Music() {
   }
@@ -75,6 +76,7 @@ public class Music {
     this.liveness = liveness;
     this.valence = valence;
     this.trackPreviewUrl = trackPreviewUrl;
+    this.documentPreferencesUser = toDocumentPreferencesMusicToUser();
   }
 
   /**
@@ -105,6 +107,24 @@ public class Music {
     documentBuilder.addElement(new Element.Builder().setType(ElementType.NUMBER).setValue(this.valence).createElement());
 
     return documentBuilder.createDocument();
+  }
+
+  private Document toDocumentPreferencesMusicToUser() {
+    Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
+
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(this.artistGenres).createElement());
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(this.artistNames).createElement());
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.NAME).setValue(this.trackName).createElement());
+
+    return documentBuilder.createDocument();
+  }
+
+  public void createPreferencesUser() {
+    this.documentPreferencesUser = toDocumentPreferencesMusicToUser();
+  }
+
+  public Document getDocumentPreferencesUser() {
+    return this.documentPreferencesUser;
   }
 
   public int getId() {

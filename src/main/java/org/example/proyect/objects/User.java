@@ -22,6 +22,7 @@ public class User {
     @JsonProperty("recently_played")
     private List<String> recentlyPlayed;
     private Document document;
+    private Document documentPreferences;
 
     public User(){
 
@@ -37,6 +38,7 @@ public class User {
         this.favoriteSongs = favoriteSongs;
         this.recentlyPlayed = recentlyPlayed;
         this.document = toDocument();
+        this.documentPreferences = toDocumentPreferences();
     }
 
     /**
@@ -56,8 +58,30 @@ public class User {
         return documentBuilder.createDocument();
     }
 
+    private Document toDocumentPreferences() {
+        Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
+
+        documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteGenres)).createElement());
+        documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteArtists)).createElement());
+        documentBuilder.addElement(new Element.Builder().setType(ElementType.NAME).setValue(String.join(" ", this.favoriteSongs)).createElement());
+
+        return documentBuilder.createDocument();
+    }
+
+    public void createDocument() {
+        this.document = toDocument();
+    }
+
+    public void creatDocumentPreferences() {
+        this.documentPreferences = toDocumentPreferences();
+    }
+
     public Document getDocument() {
         return this.document;
+    }
+
+    public Document getDocumentPreferences() {
+        return this.documentPreferences;
     }
 
     public int getId() {
