@@ -1,16 +1,12 @@
 package objects.user;
 
 import org.example.fuzzy_matcher.component.MatchService;
-import org.example.fuzzy_matcher.domain.Document;
-import org.example.fuzzy_matcher.domain.Match;
-import org.example.objects.User;
+import org.example.fuzzy_matcher.domain.*;
+import org.example.proyect.objects.User;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MatchServiceUserTest {
     private MatchService matchService = new MatchService();
