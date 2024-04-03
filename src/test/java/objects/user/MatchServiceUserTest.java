@@ -14,8 +14,8 @@ public class MatchServiceUserTest {
     @Test
     public void itShouldApplyMatchForDemo() {
         List<Document> documentList = new ArrayList<>();
-        documentList.add(getUser1().toDocument());
-        documentList.add(getUser2().toDocument());
+        documentList.add(getUser1().getDocument());
+        documentList.add(getUser2().getDocument());
 
         Map<String, List<Match<Document>>> result = matchService.applyMatchByDocId(documentList);
 

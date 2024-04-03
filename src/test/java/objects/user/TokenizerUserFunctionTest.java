@@ -42,20 +42,19 @@ public class TokenizerUserFunctionTest {
 
     @Test
     public void favoriteGenresUserTokenizer() {
-        String favoriteGenres = String.join(" ", user.getFavoriteGenres());
-        Element elem = new Element.Builder().setType(TEXT).setValue(favoriteGenres).createElement();
-        List<Token> results = getResults(wordTokenizer().apply(elem));
+        List<String> favoriteGenres = user.getFavoriteGenres();
+        Element elem = new Element.Builder().setType(ARRAY).setValue(favoriteGenres).createElement();
+        List<Token> results = getResults(arrayTokenizer().apply(elem));
         Assert.assertEquals("pop", results.get(0).getValue());
         Assert.assertEquals("hiphop", results.get(1).getValue());
-        //  Implement pre-processing for & such as and
-        Assert.assertEquals("rb", results.get(2).getValue());
+        Assert.assertEquals("randb", results.get(2).getValue());
     }
 
     @Test
     public void favoriteArtistUserTokenizer() {
-        String favoriteArtist = String.join(" ", user.getFavoriteArtists());
-        Element elem = new Element.Builder().setType(TEXT).setValue(favoriteArtist).createElement();
-        List<Token> results = getResults(wordTokenizer().apply(elem));
+        List<String> favoriteArtist = user.getFavoriteArtists();
+        Element elem = new Element.Builder().setType(ARRAY).setValue(favoriteArtist).createElement();
+        List<Token> results = getResults(arrayTokenizer().apply(elem));
         Assert.assertEquals("justin", results.get(0).getValue());
         Assert.assertEquals("timberlake", results.get(1).getValue());
         Assert.assertEquals("pitbull", results.get(2).getValue());
