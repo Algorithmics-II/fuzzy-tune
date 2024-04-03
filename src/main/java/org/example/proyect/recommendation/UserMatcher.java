@@ -2,6 +2,7 @@ package org.example.proyect.recommendation;
 
 import org.example.fuzzy_matcher.component.MatchService;
 import org.example.fuzzy_matcher.domain.*;
+import org.example.proyect.objects.Music;
 import org.example.proyect.objects.User;
 import org.example.proyect.utils.Printer;
 
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 public class UserMatcher {
     private MatchService matchService;
     private List<Match<Document>> userMatches;
+    private List<Match<Document>> userPreferencesMatches;
 
     /**
      * Constructor of the class.
@@ -40,6 +42,27 @@ public class UserMatcher {
                 .limit(topN)
                 .map(Match::getMatchedWith)
                 .collect(Collectors.toList());
+    }
+
+    public List<Document> getPreferencesRecommendation(User user, List<Music> allMusic) {
+        userPreferencesMatches = matchUserWithMusic(user, allMusic);
+        userPreferencesMatches.sort(Comparator.comparing(Match<Document>::getScore, Comparator.comparingDouble(Score::getResult)).reversed());
+
+        return userPreferencesMatches.stream()
+                .limit(10)
+                .map(Match::getMatchedWith)
+                .collect(Collectors.toList());
+    }
+
+    private List<Match<Document>> matchUserWithMusic(User user, List<Music> allMusic) {
+        Document userDocument = user.getDocumentPreferences();
+        List<Document> musicDocuments = allMusic.stream().map(Music::getDocumentPreferencesUser).collect(Collectors.toList());
+        MatchService matchService = new MatchService();
+
+        Map<Document, List<Match<Document>>> matches = matchService.applyMatch(userDocument, musicDocuments);
+
+        System.out.println(matches);
+        return matches.get(userDocument);
     }
 
     /**
