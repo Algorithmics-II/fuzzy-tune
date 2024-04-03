@@ -56,6 +56,11 @@ public class TokenizerFunction {
                 }).map(token -> new Token<String>(token, element));
     }
 
+    public static Function<Element<String>, Stream<Token<String>>> arrayTokenizer() {
+        return (element) -> Arrays.stream(element.getPreProcessedValue().split(" "))
+                .map(str -> new Token<String>(str, element));
+    }
+
     /**
      * This method returns a function that tokenizes a string element into trigrams.
      *

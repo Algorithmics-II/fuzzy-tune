@@ -4,9 +4,11 @@ import org.example.fuzzy_matcher.component.Dictionary;
 import org.example.fuzzy_matcher.util.Utils;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.List;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * A functional interface to pre-process the elements. These function are applied to element.value String's
@@ -21,6 +23,14 @@ public class PreProcessFunction<T>{
      */
     public static Function<String, String> trim() {
         return (str) -> StringUtils.trim(str);
+    }
+
+    public static Function<List<String>, String> arrayPreprocessing() {
+        return (array) -> array.stream()
+                .map(str -> str.replace("&", "and"))
+                .map(String::toLowerCase)
+                .map(namePreprocessing())
+                .collect(Collectors.joining(" "));
     }
 
     /**
