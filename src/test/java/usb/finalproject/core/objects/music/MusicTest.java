@@ -3,6 +3,7 @@ package usb.finalproject.core.objects.music;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import usb.finalproject.core.objects.Music;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

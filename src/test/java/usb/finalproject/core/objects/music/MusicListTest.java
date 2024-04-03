@@ -25,9 +25,9 @@ public class MusicListTest {
         List<Music> tracks = musicList.getTracks();
         for (Music track : tracks) {
             assertNotNull(track.getTrackName());
-            assertNotNull(track.getArtistNames());
+            assertNotNull(track.getArtistName());
             assertNotNull(track.getAlbumName());
-            assertNotNull(track.getAlbumArtistNames());
+            assertNotNull(track.getAlbumArtistName());
             assertNotNull(track.getAlbumReleaseDate());
             assertNotNull(track.getAlbumImageUrl());
             assertNotNull(track.getArtistGenres());
