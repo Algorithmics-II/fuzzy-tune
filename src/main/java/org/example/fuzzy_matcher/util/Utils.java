@@ -12,7 +12,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Utils {
-
+    /**
+     * This method generates n-grams from a given string.
+     *
+     * @param value The input string.
+     * @param size  The size of the n-grams.
+     * @return A stream of n-grams.
+     */
     public static Stream<String> getNGrams(String value, int size) {
         Stream.Builder<String> stringStream = Stream.builder();
         if (value.length() <= size) {
@@ -38,8 +44,8 @@ public class Utils {
     /**
      * utility method to apply dictionary for normalizing strings
      *
-     * @param str A String of element value to be nomalized
-     * @param dict A dictonary map containing the mapping of string to normalize
+     * @param str  A String of element value to be normalized
+     * @param dict A dictionary map containing the mapping of string to normalize
      * @return the normalized string
      */
     public static String getNormalizedString(String str, Map<String, String> dict) {
@@ -50,6 +56,12 @@ public class Utils {
                 .collect(Collectors.joining(" "));
     }
 
+    /**
+     * This method checks if a string contains any numeric characters.
+     *
+     * @param str The input string.
+     * @return `true` if the string contains any numeric characters, `false` otherwise.
+     */
     public static boolean isNumeric(String str) {
         return str.matches(".*\\d.*");
     }

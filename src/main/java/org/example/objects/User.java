@@ -1,6 +1,9 @@
 package org.example.objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.example.fuzzy_matcher.domain.Document;
+import org.example.fuzzy_matcher.domain.Element;
+import org.example.fuzzy_matcher.domain.ElementType;
 
 import java.util.List;
 
@@ -30,6 +33,23 @@ public class User {
     this.recently_played = recently_played;
   }
 
+  /**
+   * This method converts the User class into a Document to be able to make Match.
+   * @return Document converted
+   */
+  public Document toDocument() {
+    Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
+
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.NAME).setValue(this.name).createElement());
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.AGE).setValue(this.age).createElement());
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favorite_genres)).createElement());
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favorite_artists)).createElement());
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favorite_songs)).createElement());
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.recently_played)).createElement());
+
+    return documentBuilder.createDocument();
+  }
+
   public int getId() {
     return this.id;
   }
@@ -46,7 +66,7 @@ public class User {
     return this.favorite_genres;
   }
 
-  public List<String> getFavorite_artists() {
+  public List<String> getFavoriteArtists() {
     return this.favorite_artists;
   }
 

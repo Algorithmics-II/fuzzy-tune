@@ -8,7 +8,8 @@ import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 /**
- * A functional interface to get a score between 2 Match objects
+ * The `ScoringFunction` interface extends `BiFunction<Match, List<Score>, Score>`.
+ * It is a functional interface used to get a score between two `Match` objects.
  */
 public interface ScoringFunction extends BiFunction<Match, List<Score>, Score> {
 
@@ -113,38 +114,86 @@ public interface ScoringFunction extends BiFunction<Match, List<Score>, Score> {
         };
     }
 
+    /**
+     * This method calculates the sum of the weighted results of a list of scores.
+     *
+     * @param childScoreList The list of scores.
+     * @return The sum of the weighted results.
+     */
     static double getSumOfWeightedResult(List<Score> childScoreList) {
         return (childScoreList.stream().mapToDouble(d -> d.getResult() * d.getMatch().getWeight())).sum();
     }
 
+    /**
+     * This method calculates the sum of the results of a list of scores.
+     *
+     * @param childScoreList The list of scores.
+     * @return The sum of the results.
+     */
     static double getSumOfResult(List<Score> childScoreList) {
         return (childScoreList.stream().mapToDouble(d -> d.getResult())).sum();
     }
 
+    /**
+     * This method calculates the sum of the weights of a list of scores.
+     *
+     * @param childScoreList The list of scores.
+     * @return The sum of the weights.
+     */
     static double getSumOfWeights(List<Score> childScoreList) {
         return (childScoreList.stream().mapToDouble(d -> d.getMatch().getWeight())).sum();
     }
 
+    /**
+     * This method calculates the exponentially increased value of a given value.
+     *
+     * @param value The input value.
+     * @return The exponentially increased value.
+     */
     static double getExponentiallyIncreasedValue(double value) {
         return Math.pow(value, EXPONENT);
     }
 
+    /**
+     * This method returns a list of scores from a given list that have a result less than the exponential increase threshold.
+     *
+     * @param childScoreList The list of scores.
+     * @return The list of scores with a result less than the exponential increase threshold.
+     */
     static List<Score> getNonPerfectMatchedElement(List<Score> childScoreList) {
         return childScoreList.stream()
                 .filter(d -> d.getResult() < EXPONENTIAL_INCREASE_THRESHOLD)
                 .collect(Collectors.toList());
     }
 
+    /**
+     * This method returns a list of scores from a given list that have a result greater than or equal to the exponential increase threshold.
+     *
+     * @param childScoreList The list of scores.
+     * @return The list of scores with a result greater than or equal to the exponential increase threshold.
+     */
     static List<Score> getPerfectMatchedElement(List<Score> childScoreList) {
         return childScoreList.stream()
                 .filter(d -> d.getResult() >= EXPONENTIAL_INCREASE_THRESHOLD)
                 .collect(Collectors.toList());
     }
 
+    /**
+     * This method returns the count of child objects of a given match that match with the other `Matchable` object.
+     *
+     * @param match The given match.
+     * @return The count of matching child objects.
+     */
     static double getChildCount(Match match) {
         return (double) match.getData().getChildCount(match.getMatchedWith());
     }
 
+    /**
+     * This method calculates the unmatched child score of a given match.
+     *
+     * @param match The given match.
+     * @return The unmatched child score.
+     */
     static double getUnmatchedChildScore(Match match) {
         long maxUnmatchedChildCount = match.getData().getUnmatchedChildCount(match.getMatchedWith());
         return DEFAULT_UNMATCHED_CHILD_SCORE * maxUnmatchedChildCount;
