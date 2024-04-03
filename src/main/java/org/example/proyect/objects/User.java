@@ -1,21 +1,31 @@
 package org.example.proyect.objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.example.fuzzy_matcher.domain.Document;
 import org.example.fuzzy_matcher.domain.Element;
 import org.example.fuzzy_matcher.domain.ElementType;
 
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
     private int id;
     private String name;
     private int age;
+    @JsonProperty("favorite_genres")
     private List<String> favoriteGenres;
+    @JsonProperty("favorite_artists")
     private List<String> favoriteArtists;
+    @JsonProperty("favorite_songs")
     private List<String> favoriteSongs;
+    @JsonProperty("recently_played")
     private List<String> recentlyPlayed;
     private Document document;
 
+    public User(){
+
+    }
     public User(int id, String name, int age, List<String> favoriteGenres,
                 List<String> favoriteArtists, List<String> favoriteSongs,
                 List<String> recentlyPlayed) {
