@@ -75,6 +75,19 @@ public class UserMatcher {
         return documents.stream().filter(document -> document.getKey().equals(userId)).findFirst().orElse(null);
     }
 
+    public void printRecommendedSongs(List<Document> recommendedMusics, List<Music> music) {
+        int index = 0;
+        for (Document document : recommendedMusics) {
+            for (Music song: music) {
+                if (document.getKey().equals(String.valueOf(song.getId()))) {
+                    Printer.printSong(song);
+                    System.out.println("Score match: " + userPreferencesMatches.get(index++).getScore().getResult());
+                }
+            }
+            System.out.println("--------------------");
+        }
+    }
+
     /**
      * This method prints the recommended users.
      * @param recommendedUsers List of recommended users.
