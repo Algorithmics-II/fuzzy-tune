@@ -42,6 +42,19 @@ public class Element<T> implements Matchable {
 
     private T preProcessedValue;
 
+    /**
+     * This is the constructor of the `Element` class.
+     *
+     * @param type               The type of the element.
+     * @param variance           The variance of the element.
+     * @param value              The value of the element.
+     * @param weight             The weight of the element.
+     * @param threshold          The threshold for the element.
+     * @param neighborhoodRange  The neighborhood range for the element.
+     * @param preProcessFunction The preprocessing function for the element.
+     * @param tokenizerFunction  The tokenizer function for the element.
+     * @param matchType          The match type for the element.
+     */
     public Element(ElementType type, String variance, T value, double weight, double threshold,
                    double neighborhoodRange, Function<T, T> preProcessFunction,
                    Function<Element<T>, Stream<Token>> tokenizerFunction, MatchType matchType) {
@@ -63,6 +76,11 @@ public class Element<T> implements Matchable {
         return value;
     }
 
+    /**
+     * This method returns the weight of the element.
+     *
+     * @return The weight of the element.
+     */
     @Override
     public double getWeight() {
         return weight;
@@ -88,10 +106,20 @@ public class Element<T> implements Matchable {
         this.preProcessedValue = preProcessedValue;
     }
 
+    /**
+     * This method returns the preprocessed value of the element.
+     *
+     * @return The preprocessed value of the element.
+     */
     public Function<T, T> getPreProcessFunction() {
         return this.preProcessFunction;
     }
 
+    /**
+     * This method returns the preprocessed value of the element with its type.
+     *
+     * @return The preprocessed value of the element with its type.
+     */
     public T getPreProcessedValue() {
         if (this.preProcessedValue == null) {
             if (this.value instanceof String) {
@@ -105,18 +133,38 @@ public class Element<T> implements Matchable {
         return this.preProcessedValue;
     }
 
+    /**
+     * This method returns the preprocessed value of the element with its type.
+     *
+     * @return The preprocessed value of the element with its type.
+     */
     public AbstractMap.SimpleEntry getPreprocessedValueWithType() {
         return new AbstractMap.SimpleEntry(this.getElementClassification(), this.getPreProcessedValue());
     }
 
+    /**
+     * This method returns the tokenizer function for the element.
+     *
+     * @return The tokenizer function for the element.
+     */
     public Function<Element<T>, Stream<Token>> getTokenizerFunction() {
         return this.tokenizerFunction;
     }
 
+    /**
+     * This method returns the match type for the element.
+     *
+     * @return The match type for the element.
+     */
     public MatchType getMatchType() {
         return this.matchType;
     }
 
+    /**
+     * This method returns the tokens of the element.
+     *
+     * @return The tokens of the element.
+     */
     public List<Token> getTokens() {
         if (this.tokens == null) {
             this.tokens = getTokenizerFunction().apply(this).distinct().collect(Collectors.toList());
@@ -124,8 +172,15 @@ public class Element<T> implements Matchable {
         return this.tokens;
     }
 
+    /**
+     * This method returns the score of the element.
+     *
+     * @param matchingCount The count of matching elements.
+     * @param other         The other element to compare with.
+     * @return The score of the element.
+     */
     public double getScore(Integer matchingCount, Element other) {
-        return ((double)matchingCount / (double) getChildCount(other));
+        return ((double) matchingCount / (double) getChildCount(other));
     }
 
 
@@ -142,6 +197,12 @@ public class Element<T> implements Matchable {
         return 0;
     }
 
+    /**
+     * This method returns the count of child objects of this element that do not match with the other `Matchable` object.
+     *
+     * @param other The other `Matchable` object to compare with.
+     * @return The count of unmatched child objects.
+     */
     @Override
     public long getUnmatchedChildCount(Matchable other) {
         if (other instanceof Element) {
@@ -157,11 +218,22 @@ public class Element<T> implements Matchable {
         return 0;
     }
 
+    /**
+     * This method returns the scoring function for the element.
+     *
+     * @return The scoring function for the element.
+     */
     @Override
     public BiFunction<Match, List<Score>, Score> getScoringFunction() {
         return null;
     }
 
+    /**
+     * The `Builder` class is a static inner class of the `Element` class.
+     * It follows the Builder design pattern and is used to construct an `Element` object.
+     *
+     * @param <T> This is the type parameter which represents the type of the value of the element.
+     */
     public static class Builder<T> {
         private ElementType type;
         private String variance;
@@ -171,56 +243,112 @@ public class Element<T> implements Matchable {
         private double neighborhoodRange = 0.9;
         private Function<T, T> preProcessFunction;
         private MatchType matchType;
-
         private Function<Element<T>, Stream<Token>> tokenizerFunction;
 
+        /**
+         * This method sets the type of the element.
+         *
+         * @param type The type of the element.
+         * @return The current Builder object.
+         */
         public Builder setType(ElementType type) {
             this.type = type;
             return this;
         }
 
+        /**
+         * This method sets the variance of the element.
+         *
+         * @param variance The variance of the element.
+         * @return The current Builder object.
+         */
         public Builder setVariance(String variance) {
             this.variance = variance;
             return this;
         }
 
+        /**
+         * This method sets the value of the element.
+         *
+         * @param value The value of the element.
+         * @return The current Builder object.
+         */
         public Builder setValue(T value) {
             this.value = value;
             return this;
         }
 
+        /**
+         * This method sets the weight of the element.
+         *
+         * @param weight The weight of the element.
+         * @return The current Builder object.
+         */
         public Builder setWeight(double weight) {
             this.weight = weight;
             return this;
         }
 
+        /**
+         * This method sets the threshold for the element.
+         *
+         * @param threshold The threshold for the element.
+         * @return The current Builder object.
+         */
         public Builder setThreshold(double threshold) {
             this.threshold = threshold;
             return this;
         }
 
+        /**
+         * This method sets the neighborhood range for the element.
+         *
+         * @param neighborhoodRange The neighborhood range for the element.
+         * @return The current Builder object.
+         */
         public Builder setNeighborhoodRange(double neighborhoodRange) {
             this.neighborhoodRange = neighborhoodRange;
             return this;
         }
 
+        /**
+         * This method sets the preprocessing function for the element.
+         *
+         * @param preProcessingFunction The preprocessing function for the element.
+         * @return The current Builder object.
+         */
         public Builder setPreProcessingFunction(Function<T, T> preProcessingFunction) {
             this.preProcessFunction = preProcessingFunction;
             return this;
         }
 
-
+        /**
+         * This method sets the tokenizer function for the element.
+         *
+         * @param tokenizerFunction The tokenizer function for the element.
+         * @return The current Builder object.
+         */
         public Builder setTokenizerFunction(Function<Element<T>, Stream<Token>> tokenizerFunction) {
             this.tokenizerFunction = tokenizerFunction;
             return this;
         }
 
+        /**
+         * This method sets the match type for the element.
+         *
+         * @param matchType The match type for the element.
+         * @return The current Builder object.
+         */
         public Builder setMatchType(MatchType matchType) {
             this.matchType = matchType;
             return this;
         }
 
-
+        /**
+         * This method creates a new `Element` object using the current state of the Builder object.
+         *
+         * @return A new `Element` object.
+         */
         public Element createElement() {
             return new Element<T>(type, variance, value, weight, threshold, neighborhoodRange, preProcessFunction, tokenizerFunction, matchType);
         }
@@ -254,4 +382,3 @@ public class Element<T> implements Matchable {
         return result;
     }
 }
-
