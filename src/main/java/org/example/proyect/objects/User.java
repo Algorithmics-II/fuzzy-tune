@@ -67,7 +67,6 @@ public class User {
 
         documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteGenres)).createElement());
         documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteArtists)).createElement());
-        documentBuilder.addElement(new Element.Builder().setType(ElementType.NAME).setValue(String.join(" ", this.favoriteSongs)).createElement());
 
         return documentBuilder.createDocument();
     }

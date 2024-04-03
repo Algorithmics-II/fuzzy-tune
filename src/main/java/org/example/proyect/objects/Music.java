@@ -119,7 +119,6 @@ public class Music {
 
     documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(this.artistGenres).createElement());
     documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(this.artistNames).createElement());
-    documentBuilder.addElement(new Element.Builder().setType(ElementType.NAME).setValue(this.trackName).createElement());
 
     return documentBuilder.createDocument();
   }
@@ -129,6 +128,8 @@ public class Music {
   }
 
   public Document getDocumentPreferencesUser() {
+    if (this.documentPreferencesUser == null)
+      this.documentPreferencesUser = toDocumentPreferencesMusicToUser();
     return this.documentPreferencesUser;
   }
 

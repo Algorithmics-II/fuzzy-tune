@@ -1,8 +1,10 @@
 package objects.recommendation;
 
+import dataReader.DataReader;
 import org.example.fuzzy_matcher.component.MatchService;
 import org.example.fuzzy_matcher.domain.Document;
 import org.example.proyect.objects.Music;
+import org.example.proyect.objects.MusicList;
 import org.example.proyect.objects.User;
 import org.example.proyect.recommendation.UserMatcher;
 import org.junit.Assert;
@@ -55,12 +57,15 @@ public class UserMatcherTest {
     }
 
     @Test
-    public void recommendationOnPreferencesUser() {
+    public void recommendationOnPreferencesUser() throws Exception {
         matchService = new MatchService();
         userMatcher = new UserMatcher(matchService);
 
         List<User> users = new ArrayList<>();
         users.add(getUser1());
+
+        MusicList musicList = DataReader.readMusicListFromJson("src/main/resources/tracks.json");
+        List<Music> tracks = musicList.getTracks();
 
         List<Music> allMusics = new ArrayList<>();
         allMusics.add(getMusic1());
@@ -69,13 +74,13 @@ public class UserMatcherTest {
         allMusics.add(getMusic4());
         allMusics.add(getMusic5());
 
-        List<Document> recommendedUsers = userMatcher.getPreferencesRecommendation(getUser1(), allMusics);
-        userMatcher.printRecommendedSongs(recommendedUsers, allMusics);
+        List<Document> recommendedUsers = userMatcher.getPreferencesRecommendation(getUser1(), tracks);
+        userMatcher.printRecommendedSongs(recommendedUsers, tracks);
     }
 
     private User getUser1() {
-        return new User(1, "John", 30, Arrays.asList("Pop", "Hip-hop", "R&B"),
-                Arrays.asList("Justin Timberlake", "Pitbull", "Britney Spears"),
+        return new User(1, "John", 30, Arrays.asList("pop"),
+                Arrays.asList("Ringo Starr", "Taylor Swift"),
                 Arrays.asList("Justified & Ancient - Stand by the Jams", "I Know You Want Me (Calle Ocho)", "From the Bottom of My Broken Heart"),
                 Arrays.asList("Apeman - 2014 Remastered Version", "You Can't Always Get What You Want", "Don't Stop - 2004 Remaster"));
     }

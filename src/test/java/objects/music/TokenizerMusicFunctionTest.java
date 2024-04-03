@@ -42,10 +42,10 @@ public class TokenizerMusicFunctionTest {
         Element elem = new Element.Builder().setType(TEXT).setValue(artistGenres).createElement();
         List<Token> results = getResults(wordTokenizer().apply(elem));
         Assert.assertEquals("acid", results.get(0).getValue());
-        Assert.assertEquals("houseambient", results.get(1).getValue());
-        Assert.assertEquals("housebig", results.get(2).getValue());
-        Assert.assertEquals("beathip", results.get(3).getValue());
-        Assert.assertEquals("house", results.get(4).getValue());
+        Assert.assertEquals("house", results.get(1).getValue());
+        Assert.assertEquals("ambient", results.get(2).getValue());
+        Assert.assertEquals("house", results.get(3).getValue());
+        Assert.assertEquals("big", results.get(4).getValue());
     }
 
     private Music getMusic() {

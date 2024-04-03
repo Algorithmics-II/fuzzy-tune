@@ -61,8 +61,9 @@ public class PreProcessFunction<T>{
      * @return the function to perform removeSpecialChars
      */
     public static Function<String, String> removeSpecialChars() {
-        return (str) -> str.replaceAll("[^A-Za-z0-9 ]+", "");
+        return (str) -> str.replaceAll(",", " ").replaceAll("[^A-Za-z0-9 ]+", "");
     }
+
 
     /**
      * Used for emails, remove everything after the '@' character
