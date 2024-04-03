@@ -3,7 +3,6 @@ package objects.music;
 import dataReader.DataReader;
 import org.example.objects.User;
 import org.example.objects.UserList;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -30,8 +29,8 @@ public class UserListTest {
             assertNotNull(user.getAge());
             assertNotNull(user.getFavoriteGenres());
             assertNotNull(user.getFavoriteArtists());
-            assertNotNull(user.getFavorite_songs());
-            assertNotNull(user.getRecently_played());
+            assertNotNull(user.getFavoriteSongs());
+            assertNotNull(user.getRecentlyPlayed());
         }
     }
 

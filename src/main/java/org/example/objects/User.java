@@ -14,26 +14,28 @@ public class User {
   private String name;
   private int age;
   @JsonProperty("favorite_genres")
-  private List<String> favorite_genres;
+  private List<String> favoriteGenres;
   @JsonProperty("favorite_artists")
-  private List<String> favorite_artists;
-  private List<String> favorite_songs;
-  private List<String> recently_played;
+  private List<String> favoriteArtists;
+  @JsonProperty("favorite_songs")
+  private List<String> favoriteSongs;
+  @JsonProperty("recently_played")
+  private List<String> recentlyPlayed;
 
 
   public User() {
   }
 
-  public User(int id, String name, int age, List<String> favorite_genres,
-              List<String> favorite_artists, List<String> favorite_songs,
-              List<String> recently_played) {
+  public User(int id, String name, int age, List<String> favoriteGenres,
+              List<String> favoriteArtists, List<String> favoriteSongs,
+              List<String> recentlyPlayed) {
     this.id = id;
     this.name = name;
     this.age = age;
-    this.favorite_genres = favorite_genres;
-    this.favorite_artists = favorite_artists;
-    this.favorite_songs = favorite_songs;
-    this.recently_played = recently_played;
+    this.favoriteGenres = favoriteGenres;
+    this.favoriteArtists = favoriteArtists;
+    this.favoriteSongs = favoriteSongs;
+    this.recentlyPlayed = recentlyPlayed;
   }
 
   /**
@@ -45,10 +47,10 @@ public class User {
 
     documentBuilder.addElement(new Element.Builder().setType(ElementType.NAME).setValue(this.name).createElement());
     documentBuilder.addElement(new Element.Builder().setType(ElementType.AGE).setValue(this.age).createElement());
-    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favorite_genres)).createElement());
-    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favorite_artists)).createElement());
-    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favorite_songs)).createElement());
-    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.recently_played)).createElement());
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteGenres)).createElement());
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteArtists)).createElement());
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteSongs)).createElement());
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.recentlyPlayed)).createElement());
 
     return documentBuilder.createDocument();
   }
@@ -66,18 +68,18 @@ public class User {
   }
 
   public List<String> getFavoriteGenres() {
-    return this.favorite_genres;
+    return this.favoriteGenres;
   }
 
   public List<String> getFavoriteArtists() {
-    return this.favorite_artists;
+    return this.favoriteArtists;
   }
 
-  public List<String> getFavorite_songs() {
-    return this.favorite_songs;
+  public List<String> getFavoriteSongs() {
+    return this.favoriteSongs;
   }
 
-  public List<String> getRecently_played() {
-    return this.recently_played;
+  public List<String> getRecentlyPlayed() {
+    return this.recentlyPlayed;
   }
 }
