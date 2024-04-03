@@ -9,6 +9,11 @@ import org.example.fuzzy_matcher.domain.Element;
 import org.example.fuzzy_matcher.domain.ElementType;
 
 
+import org.example.fuzzy_matcher.domain.Document;
+import org.example.fuzzy_matcher.domain.Element;
+import org.example.fuzzy_matcher.domain.ElementType;
+
+
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
