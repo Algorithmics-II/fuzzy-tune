@@ -1,18 +1,32 @@
 package org.example.objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Music {
   private int id;
+  @JsonProperty("track_name")
   private String trackName;
+  @JsonProperty("artist_name(s)")
   private String artistNames;
+  @JsonProperty("album_name")
   private String albumName;
+  @JsonProperty("album_artist_name(s)")
   private String albumArtistNames;
+  @JsonProperty("album_release_date")
   private String albumReleaseDate;
+  @JsonProperty("album_image_url")
   private String albumImageUrl;
-  private List<String> artistGenres;
+  @JsonProperty("artist_genres")
+  private String artistGenres;
+  @JsonProperty("disc_number")
   private int discNumber;
+  @JsonProperty("track_number")
   private int trackNumber;
+  @JsonProperty("track_duration(ms)")
   private long trackDurationMs;
   private boolean explicit;
   private int popularity;
@@ -23,11 +37,15 @@ public class Music {
   private double instrumentalness;
   private double liveness;
   private double valence;
+  @JsonProperty("track_preview_url")
   private String trackPreviewUrl;
+
+  public Music() {
+  }
 
   public Music(int id, String trackName, String artistNames, String albumName,
                String albumArtistNames, String albumReleaseDate, String albumImageUrl,
-               List<String> artistGenres, int discNumber, int trackNumber, long trackDurationMs,
+               String artistGenres, int discNumber, int trackNumber, long trackDurationMs,
                boolean explicit, int popularity, double danceability, double energy,
                double speechiness, double acousticness, double instrumentalness,
                double liveness, double valence, String trackPreviewUrl) {
@@ -82,7 +100,7 @@ public class Music {
     return this.albumImageUrl;
   }
 
-  public List<String> getArtistGenres() {
+  public String getArtistGenres() {
     return this.artistGenres;
   }
 

@@ -1,30 +1,33 @@
 package org.example.objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
   private int id;
   private String name;
   private int age;
-  private List<String> favoriteGenres;
-  private List<String> favoriteArtists;
-  private List<String> favoriteSongs;
-  private List<String> recentlyPlayed;
+  private List<String> favorite_genres;
+  private List<String> favorite_artists;
+  private List<String> favorite_songs;
+  private List<String> recently_played;
 
 
   public User() {
   }
 
-  public User(int id, String name, int age, List<String> favoriteGenres,
-              List<String> favoriteArtists, List<String> favoriteSongs,
-              List<String> recentlyPlayed) {
+  public User(int id, String name, int age, List<String> favorite_genres,
+              List<String> favorite_artists, List<String> favorite_songs,
+              List<String> recently_played) {
     this.id = id;
     this.name = name;
     this.age = age;
-    this.favoriteGenres = favoriteGenres;
-    this.favoriteArtists = favoriteArtists;
-    this.favoriteSongs = favoriteSongs;
-    this.recentlyPlayed = recentlyPlayed;
+    this.favorite_genres = favorite_genres;
+    this.favorite_artists = favorite_artists;
+    this.favorite_songs = favorite_songs;
+    this.recently_played = recently_played;
   }
 
   public int getId() {
@@ -40,18 +43,18 @@ public class User {
   }
 
   public List<String> getFavoriteGenres() {
-    return this.favoriteGenres;
+    return this.favorite_genres;
   }
 
-  public List<String> getFavoriteArtists() {
-    return this.favoriteArtists;
+  public List<String> getFavorite_artists() {
+    return this.favorite_artists;
   }
 
-  public List<String> getFavoriteSongs() {
-    return this.favoriteSongs;
+  public List<String> getFavorite_songs() {
+    return this.favorite_songs;
   }
 
-  public List<String> getRecentlyPlayed() {
-    return this.recentlyPlayed;
+  public List<String> getRecently_played() {
+    return this.recently_played;
   }
 }
