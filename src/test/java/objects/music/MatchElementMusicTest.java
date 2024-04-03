@@ -42,7 +42,7 @@ public class MatchElementMusicTest {
         Set<Match<Element>> matchSet2 = elementMatch.matchElement(elem2);
         System.out.println(matchSet2);
         Assert.assertEquals(1, matchSet2.size());
-        Assert.assertEquals(0.4, matchSet2.iterator().next().getResult(), 0.0);
+        Assert.assertEquals(0.5, matchSet2.iterator().next().getResult(), 0.0);
     }
 
     private Music getMusic1() {

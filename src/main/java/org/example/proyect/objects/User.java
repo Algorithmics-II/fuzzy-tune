@@ -52,8 +52,6 @@ public class User {
         documentBuilder.addElement(new Element.Builder().setType(ElementType.AGE).setValue(this.age).createElement());
         documentBuilder.addElement(new Element.Builder().setType(ElementType.ARRAY).setValue(this.favoriteGenres).createElement());
         documentBuilder.addElement(new Element.Builder().setType(ElementType.ARRAY).setValue(this.favoriteArtists).createElement());
-        documentBuilder.addElement(new Element.Builder().setType(ElementType.ARRAY).setValue(this.favoriteSongs).createElement());
-        documentBuilder.addElement(new Element.Builder().setType(ElementType.ARRAY).setValue(this.recentlyPlayed).createElement());
 
         return documentBuilder.createDocument();
     }
@@ -71,19 +69,37 @@ public class User {
         return documentBuilder.createDocument();
     }
 
+    /**
+     * This method will create a document for User
+     */
     public void createDocument() {
         this.document = toDocument();
     }
 
+    /**
+     * This method will create a document for a preferences User
+     */
     public void creatDocumentPreferences() {
         this.documentPreferences = toDocumentPreferences();
     }
 
+    /**
+     * This method will return the Document created verifying if this is not null
+     * @return document created
+     */
     public Document getDocument() {
+        if (this.document == null)
+            this.document = toDocument();
         return this.document;
     }
 
+    /**
+     * This method will return the document created for preferences User verifying if this is not null
+     * @return document created
+     */
     public Document getDocumentPreferences() {
+        if (this.documentPreferences == null)
+            this.documentPreferences = toDocumentPreferences();
         return this.documentPreferences;
     }
 

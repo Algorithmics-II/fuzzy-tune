@@ -30,11 +30,12 @@ public class UserMatcher {
     /**
      * This method gets the top N matches for the user.
      * @param userDocument User document to match.
-     * @param documents List of documents to match.
+     * @param users List of users to match.
      * @param topN Number of top matches to get.
      * @return List of top N matches.
      */
-    public List<Document> getTopMatches(Document userDocument, List<Document> documents, int topN) {
+    public List<Document> getTopMatches(Document userDocument, List<User> users, int topN) {
+        List<Document> documents = users.stream().map(User::getDocument).collect(Collectors.toList());
         Map<Document, List<Match<Document>>> matches = matchService.applyMatch(documents);
         userMatches = matches.get(userDocument);
         userMatches.sort(Comparator.comparing(Match<Document>::getScore, Comparator.comparingDouble(Score::getResult)).reversed());

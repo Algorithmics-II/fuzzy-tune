@@ -24,9 +24,9 @@ public class UserDocumentTest {
                 .addElement(new Element.Builder().setType(EMAIL).setValue("james@email.com").createElement())
                 .createDocument();
 
-        Assert.assertEquals(8, d1.getChildCount(d2));
-        Assert.assertEquals(8, d2.getChildCount(d1));
-        Assert.assertEquals(8, d1.getUnmatchedChildCount(d2));
+        Assert.assertEquals(6, d1.getChildCount(d2));
+        Assert.assertEquals(6, d2.getChildCount(d1));
+        Assert.assertEquals(6, d1.getUnmatchedChildCount(d2));
     }
 
     private User getUser1() {
