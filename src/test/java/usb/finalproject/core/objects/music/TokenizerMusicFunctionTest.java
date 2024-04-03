@@ -1,4 +1,4 @@
-package objects.music;
+package usb.finalproject.core.objects.music;
 
 import usb.finalproject.core.objects.Music;
 import usb.finalproject.fuzzy.matcher.domain.Element;

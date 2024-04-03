@@ -1,4 +1,4 @@
-package objects.user;
+package usb.finalproject.core.objects.user;
 
 import usb.finalproject.core.objects.User;
 import usb.finalproject.fuzzy.matcher.component.MatchService;

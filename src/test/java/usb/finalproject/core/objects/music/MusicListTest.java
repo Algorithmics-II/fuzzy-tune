@@ -1,4 +1,4 @@
-package objects.music;
+package usb.finalproject.core.objects.music;
 
 import usb.finalproject.utils.DataReader;
 import usb.finalproject.core.objects.Music;

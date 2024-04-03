@@ -1,13 +1,13 @@
-package objects.user;
+package usb.finalproject.core.objects.user;
 
-import org.example.fuzzy_matcher.domain.Element;
+import usb.finalproject.fuzzy.matcher.domain.Element;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.example.fuzzy_matcher.domain.ElementType.ARRAY;
+import static usb.finalproject.fuzzy.matcher.domain.ElementType.ARRAY;
 
 public class PreProcessFunctionUserTest {
     @Test

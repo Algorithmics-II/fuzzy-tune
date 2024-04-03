@@ -1,4 +1,4 @@
-package objects.recommendation;
+package usb.finalproject.core.objects.recommendation;
 
 import usb.finalproject.utils.DataReader;
 import usb.finalproject.fuzzy.matcher.component.MatchService;

@@ -1,4 +1,4 @@
-package usb.finalproject.objects;
+package usb.finalproject.core.objects.user;
 
 import org.junit.After;
 import org.junit.Before;
