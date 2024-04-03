@@ -1,6 +1,7 @@
 package org.example.objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.example.fuzzy_matcher.domain.Document;
 import org.example.fuzzy_matcher.domain.Element;
 import org.example.fuzzy_matcher.domain.ElementType;
@@ -12,7 +13,9 @@ public class User {
   private int id;
   private String name;
   private int age;
+  @JsonProperty("favorite_genres")
   private List<String> favorite_genres;
+  @JsonProperty("favorite_artists")
   private List<String> favorite_artists;
   private List<String> favorite_songs;
   private List<String> recently_played;
