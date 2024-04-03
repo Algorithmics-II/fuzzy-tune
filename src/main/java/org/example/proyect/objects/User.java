@@ -46,18 +46,22 @@ public class User {
      *
      * @return Document converted
      */
-    public Document toDocument() {
+    private Document toDocument() {
         Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
 
         documentBuilder.addElement(new Element.Builder().setType(ElementType.AGE).setValue(this.age).createElement());
-        documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteGenres)).createElement());
-        documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteArtists)).createElement());
-        documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteSongs)).createElement());
-        documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.recentlyPlayed)).createElement());
+        documentBuilder.addElement(new Element.Builder().setType(ElementType.ARRAY).setValue(this.favoriteGenres).createElement());
+        documentBuilder.addElement(new Element.Builder().setType(ElementType.ARRAY).setValue(this.favoriteArtists).createElement());
+        documentBuilder.addElement(new Element.Builder().setType(ElementType.ARRAY).setValue(this.favoriteSongs).createElement());
+        documentBuilder.addElement(new Element.Builder().setType(ElementType.ARRAY).setValue(this.recentlyPlayed).createElement());
 
         return documentBuilder.createDocument();
     }
 
+    /**
+     * This method converts the User class into a Document to be able to make Match.
+     * @return Document converted
+     */
     private Document toDocumentPreferences() {
         Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
 

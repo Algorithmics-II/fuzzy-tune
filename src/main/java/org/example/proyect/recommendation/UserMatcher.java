@@ -44,6 +44,12 @@ public class UserMatcher {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * This method gets the preferences recommendation of the user and that will search in all the music.
+     * @param user User to get the preferences recommendation.
+     * @param allMusic List of all music to search.
+     * @return List of preferences recommendation.
+     */
     public List<Document> getPreferencesRecommendation(User user, List<Music> allMusic) {
         userPreferencesMatches = matchUserWithMusic(user, allMusic);
         userPreferencesMatches.sort(Comparator.comparing(Match<Document>::getScore, Comparator.comparingDouble(Score::getResult)).reversed());
@@ -54,6 +60,12 @@ public class UserMatcher {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * This method matches the user with the music.
+     * @param user User to match.
+     * @param allMusic List of all music to match.
+     * @return List of matches.
+     */
     private List<Match<Document>> matchUserWithMusic(User user, List<Music> allMusic) {
         Document userDocument = user.getDocumentPreferences();
         List<Document> musicDocuments = allMusic.stream().map(Music::getDocumentPreferencesUser).collect(Collectors.toList());
@@ -66,15 +78,10 @@ public class UserMatcher {
     }
 
     /**
-     * This method gets the user document to match.
-     * @param documents List of documents to match.
-     * @param userId User id to match.
-     * @return User document to match.
+     * This method prints the recommended songs.
+     * @param recommendedMusics List of recommended songs.
+     * @param music List of music.
      */
-    public Document getUserDocumentToMatch(List<Document> documents, String userId) {
-        return documents.stream().filter(document -> document.getKey().equals(userId)).findFirst().orElse(null);
-    }
-
     public void printRecommendedSongs(List<Document> recommendedMusics, List<Music> music) {
         int index = 0;
         for (Document document : recommendedMusics) {
@@ -86,6 +93,17 @@ public class UserMatcher {
             }
             System.out.println("--------------------");
         }
+    }
+
+
+    /**
+     * This method gets the user document to match.
+     * @param documents List of documents to match.
+     * @param userId User id to match.
+     * @return User document to match.
+     */
+    public Document getUserDocumentToMatch(List<Document> documents, String userId) {
+        return documents.stream().filter(document -> document.getKey().equals(userId)).findFirst().orElse(null);
     }
 
     /**

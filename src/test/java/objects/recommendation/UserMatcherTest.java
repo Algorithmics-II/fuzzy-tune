@@ -35,6 +35,7 @@ public class UserMatcherTest {
 
         List<Document> recommendedUsers = userMatcher.getTopMatches(userToMatch, documentList, 5);
         userMatcher.printRecommendedUsers(recommendedUsers, users);
+        System.out.println(recommendedUsers);
 
         // User 1 recommended: Mateo
         Assert.assertEquals("Mateo", users.get(2).getName());

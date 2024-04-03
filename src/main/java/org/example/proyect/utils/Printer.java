@@ -16,6 +16,10 @@ public class Printer {
         System.out.println("User recently played: " + user.getRecentlyPlayed());
     }
 
+    /**
+     * This method prints the song information.
+     * @param music Music to print
+     */
     public static void printSong(Music music) {
         System.out.println("Song recommended: " + music.getTrackName());
         System.out.println("Artist: " + music.getArtistNames());

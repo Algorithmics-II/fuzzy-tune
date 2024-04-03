@@ -109,6 +109,11 @@ public class Music {
     return documentBuilder.createDocument();
   }
 
+
+  /**
+   * This method converts the Music class into a Document to be able to make Match.
+   * @return Document converted
+   */
   private Document toDocumentPreferencesMusicToUser() {
     Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
 

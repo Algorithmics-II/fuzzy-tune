@@ -56,6 +56,10 @@ public class TokenizerFunction {
                 }).map(token -> new Token<String>(token, element));
     }
 
+    /**
+     * This method tokenizes an array of strings.
+     * @return A function that tokenizes an array of strings.
+     */
     public static Function<Element<String>, Stream<Token<String>>> arrayTokenizer() {
         return (element) -> Arrays.stream(element.getPreProcessedValue().split(" "))
                 .map(str -> new Token<String>(str, element));

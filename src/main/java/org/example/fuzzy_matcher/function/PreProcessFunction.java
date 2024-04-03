@@ -25,6 +25,10 @@ public class PreProcessFunction<T>{
         return (str) -> StringUtils.trim(str);
     }
 
+    /**
+     * Uses Apache commons StringUtils lowerCase method and replaces "&" with "and" reusing the namePreprocessing function
+     * @return the function to perform toLowerCase
+     */
     public static Function<List<String>, String> arrayPreprocessing() {
         return (array) -> array.stream()
                 .map(str -> str.replace("&", "and"))
