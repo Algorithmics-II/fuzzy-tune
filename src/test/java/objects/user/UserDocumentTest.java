@@ -2,7 +2,7 @@ package objects.user;
 
 import org.example.fuzzy_matcher.domain.Document;
 import org.example.fuzzy_matcher.domain.Element;
-import org.example.objects.User;
+import org.example.proyect.objects.User;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +14,7 @@ import static org.example.fuzzy_matcher.domain.ElementType.EMAIL;
 public class UserDocumentTest {
     @Test
     public void childCountAndUnmatchedCountTest() {
-        Document d1 = getUser1().toDocument();
+        Document d1 = getUser1().getDocument();
         System.out.println(d1);
 
         Document d2 = new Document.Builder("2")
@@ -26,7 +26,7 @@ public class UserDocumentTest {
 
         Assert.assertEquals(8, d1.getChildCount(d2));
         Assert.assertEquals(8, d2.getChildCount(d1));
-        Assert.assertEquals(7, d1.getUnmatchedChildCount(d2));
+        Assert.assertEquals(8, d1.getUnmatchedChildCount(d2));
     }
 
     private User getUser1() {

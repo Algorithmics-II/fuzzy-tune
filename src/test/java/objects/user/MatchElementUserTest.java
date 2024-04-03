@@ -4,7 +4,7 @@ import org.example.fuzzy_matcher.component.ElementMatch;
 import org.example.fuzzy_matcher.domain.Document;
 import org.example.fuzzy_matcher.domain.Element;
 import org.example.fuzzy_matcher.domain.Match;
-import org.example.objects.User;
+import org.example.proyect.objects.User;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.example.fuzzy_matcher.domain.ElementType.TEXT;
 
-public class MatchElementUser {
+public class MatchElementUserTest {
     private ElementMatch elementMatch = new ElementMatch();
     AtomicInteger atomicInteger = new AtomicInteger();
     private User user;

@@ -1,6 +1,7 @@
-package org.example.objects;
+package org.example.proyect.objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.example.proyect.objects.Music;
 
 import java.util.List;
 

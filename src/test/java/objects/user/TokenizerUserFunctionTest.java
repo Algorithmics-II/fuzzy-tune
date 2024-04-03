@@ -1,9 +1,8 @@
 package objects.user;
 
-import org.example.fuzzy_matcher.domain.Document;
 import org.example.fuzzy_matcher.domain.Element;
 import org.example.fuzzy_matcher.domain.Token;
-import org.example.objects.User;
+import org.example.proyect.objects.User;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -2,16 +2,11 @@ package objects.music;
 
 import org.example.fuzzy_matcher.component.MatchService;
 import org.example.fuzzy_matcher.domain.Document;
-import org.example.fuzzy_matcher.domain.Match;
-import org.example.objects.Music;
-import org.example.objects.User;
-import org.junit.Assert;
+import org.example.proyect.objects.Music;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class MatchServiceMusicTest {
     private MatchService matchService = new MatchService();

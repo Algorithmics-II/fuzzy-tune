@@ -1,8 +1,8 @@
 package dataReader;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.objects.MusicList;
-import org.example.objects.UserList;
+import org.example.proyect.objects.MusicList;
+import org.example.proyect.objects.UserList;
 
 import java.io.File;
 import java.io.IOException;

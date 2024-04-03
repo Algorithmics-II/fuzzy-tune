@@ -1,4 +1,4 @@
-package org.example.objects;
+package org.example.proyect.objects;
 
 import java.util.List;
 

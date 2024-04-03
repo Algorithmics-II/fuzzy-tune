@@ -1,8 +1,8 @@
 package objects.music;
 
 import dataReader.DataReader;
-import org.example.objects.Music;
-import org.example.objects.MusicList;
+import org.example.proyect.objects.Music;
+import org.example.proyect.objects.MusicList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
