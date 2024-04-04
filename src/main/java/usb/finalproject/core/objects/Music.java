@@ -42,6 +42,7 @@ public class Music {
   @JsonProperty("track_preview_url")
   private String trackPreviewUrl;
   private Document documentPreferencesUser;
+  private Document documentRecentlyPlayed;
 
   public Music() {
   }
@@ -120,6 +121,14 @@ public class Music {
     return documentBuilder.createDocument();
   }
 
+  private Document toDocumentRecentlyRelatedMusicToUser() {
+    Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
+
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(this.trackName).createElement());
+
+    return documentBuilder.createDocument();
+  }
+
   public void createPreferencesUser() {
     this.documentPreferencesUser = toDocumentPreferencesMusicToUser();
   }
@@ -128,6 +137,12 @@ public class Music {
     if (this.documentPreferencesUser == null)
       this.documentPreferencesUser = toDocumentPreferencesMusicToUser();
     return this.documentPreferencesUser;
+  }
+
+  public Document getDocumentRecentlyPlayed() {
+    if (this.documentRecentlyPlayed == null)
+      this.documentRecentlyPlayed = toDocumentPreferencesMusicToUser();
+    return this.documentRecentlyPlayed;
   }
 
   public int getId() {

@@ -18,6 +18,7 @@ public class UserMatcher {
     private MatchService matchService;
     private List<Match<Document>> userMatches;
     private List<Match<Document>> userPreferencesMatches;
+    private List<Match<Document>> userPreferencesRecentlyPlayed;
 
     /**
      * Constructor of the class.
@@ -76,6 +77,26 @@ public class UserMatcher {
 
         System.out.println(matches);
         return matches.get(userDocument);
+    }
+
+    private List<Match<Document>> matchUserWithRecentlyPlayedMusic(User user, List<Music> allMusic) {
+        Document userDocument = user.getDocumentRecentlyPlayedUser();
+        List<Document> musicDocuments = allMusic.stream().map(Music::getDocumentRecentlyPlayed).collect(Collectors.toList());
+        MatchService matchService = new MatchService();
+
+        Map<Document, List<Match<Document>>> matches = matchService.applyMatch(userDocument, musicDocuments);
+
+        return matches.get(userDocument);
+    }
+
+    public List<Document> getPreferencesRecentlyPlayed(User user, List<Music> allMusic) {
+        userPreferencesRecentlyPlayed = matchUserWithRecentlyPlayedMusic(user, allMusic);
+        userPreferencesRecentlyPlayed.sort(Comparator.comparing(Match<Document>::getScore, Comparator.comparingDouble(Score::getResult)).reversed());
+
+        return userPreferencesRecentlyPlayed.stream()
+                .limit(10)
+                .map(Match::getMatchedWith)
+                .collect(Collectors.toList());
     }
 
     /**
