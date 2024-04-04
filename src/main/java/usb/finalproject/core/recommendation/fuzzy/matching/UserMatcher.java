@@ -1,4 +1,4 @@
-package usb.finalproject.core.recommendation;
+package usb.finalproject.core.recommendation.fuzzy.matching;
 
 import usb.finalproject.fuzzy.matcher.component.MatchService;
 import usb.finalproject.fuzzy.matcher.domain.*;

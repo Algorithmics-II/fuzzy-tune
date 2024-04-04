@@ -7,7 +7,7 @@ import usb.finalproject.core.objects.Music;
 import usb.finalproject.core.objects.MusicList;
 import usb.finalproject.core.objects.User;
 import usb.finalproject.core.objects.UserList;
-import usb.finalproject.core.recommendation.UserMatcher;
+import usb.finalproject.core.recommendation.fuzzy.matching.UserMatcher;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;

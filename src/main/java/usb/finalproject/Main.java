@@ -1,19 +1,64 @@
 package usb.finalproject;
 
+import usb.finalproject.core.objects.Music;
+import usb.finalproject.core.objects.MusicList;
+import usb.finalproject.core.objects.User;
+import usb.finalproject.core.objects.UserList;
+import usb.finalproject.core.recommendation.jaro.winker.MusicMatcher;
+import usb.finalproject.core.recommendation.jaro.winker.UserMatcher;
+import usb.finalproject.core.utils.Printer;
+import usb.finalproject.utils.DataReader;
+
+import java.util.List;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+  private static final String USERS = "src/main/resources/users.json";
+  private static final String SONGS = "src/main/resources/tracks.json";
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+  public static void main(String[] args) {
+    findSimilarUsers();
+    recommendSongs();
+  }
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+  private static void findSimilarUsers() {
+    try {
+      UserList userList = DataReader.readUsersFromJson(USERS);
+      List<User> users = userList.getUsers();
+      User targetUser = users.get(20);
+
+      UserMatcher recommendationSystem = new UserMatcher();
+      List<User> similarUsers = recommendationSystem.getSimilarUsers(targetUser, users);
+
+      System.out.println("Top 5 similar users to " + targetUser.getName() + ":");
+      for (User user : similarUsers) {
+        Printer.printUser(user);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
     }
+  }
+
+  private static void recommendSongs() {
+    try {
+      UserList userList = DataReader.readUsersFromJson(USERS);
+      MusicList musicList = DataReader.readMusicListFromJson(SONGS);
+      List<User> users = userList.getUsers();
+      List<Music> musicLibrary = musicList.getTracks();
+
+      User user = users.get(2);
+
+      MusicMatcher recommendationSystem = new MusicMatcher();
+
+      List<Music> recommendedSongs = recommendationSystem.recommendSongs(user, musicLibrary);
+
+      System.out.println("Recommended songs for user " + user.getName() + ":");
+      for (Music song : recommendedSongs) {
+        Printer.printSong(song);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 }

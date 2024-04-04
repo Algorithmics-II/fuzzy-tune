@@ -2,6 +2,7 @@ package usb.finalproject.core.objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import usb.finalproject.fuzzy.matcher.domain.Document;
 import usb.finalproject.fuzzy.matcher.domain.Element;
 import usb.finalproject.fuzzy.matcher.domain.ElementType;
