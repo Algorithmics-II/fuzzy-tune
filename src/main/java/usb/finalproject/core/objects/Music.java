@@ -42,6 +42,7 @@ public class Music {
   @JsonProperty("track_preview_url")
   private String trackPreviewUrl;
   private Document documentPreferencesUser;
+  private Document documentTrackName;
 
   public Music() {
   }
@@ -74,6 +75,7 @@ public class Music {
     this.valence = valence;
     this.trackPreviewUrl = trackPreviewUrl;
     this.documentPreferencesUser = toDocumentPreferencesMusicToUser();
+    this.documentTrackName = toDocumentTrackName();
   }
 
   /**
@@ -120,14 +122,43 @@ public class Music {
     return documentBuilder.createDocument();
   }
 
+  /**
+   * This method converts the Music class into a Document to be able to make Match.
+   * @return Document converted
+   */
+  private Document toDocumentTrackName() {
+    Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
+
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.NAMETRACK).setValue(this.trackName).createElement());
+
+    return documentBuilder.createDocument();
+  }
+
   public void createPreferencesUser() {
     this.documentPreferencesUser = toDocumentPreferencesMusicToUser();
+  }
+
+  /**
+   * This method will create a Document with the Music track name
+   */
+  public void createDocumentTrackName() {
+    this.documentTrackName = toDocumentTrackName();
   }
 
   public Document getDocumentPreferencesUser() {
     if (this.documentPreferencesUser == null)
       this.documentPreferencesUser = toDocumentPreferencesMusicToUser();
     return this.documentPreferencesUser;
+  }
+
+  /**
+   * This method will return the Document created with the Music track name verifying if this is not null
+   * @return document created
+   */
+  public Document getDocumentTrackName() {
+    if (this.documentTrackName == null)
+        this.documentTrackName = toDocumentTrackName();
+    return this.documentTrackName;
   }
 
   public int getId() {

@@ -24,6 +24,7 @@ public class User {
     private List<String> recentlyPlayed;
     private Document document;
     private Document documentPreferences;
+    private Document documentRecentlyPlayed;
 
     public User(){
 
@@ -40,6 +41,7 @@ public class User {
         this.recentlyPlayed = recentlyPlayed;
         this.document = toDocument();
         this.documentPreferences = toDocumentPreferences();
+        this.documentRecentlyPlayed = toDocumentRecentlyPlayed();
     }
 
     /**
@@ -71,6 +73,22 @@ public class User {
     }
 
     /**
+     * This method converts the User class into a Document to be able to make Match.
+     * @return Document converted
+     */
+    private Document toDocumentRecentlyPlayed() {
+        Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
+
+        // Iterate through the list of recently played music tracks.
+        for (var music: recentlyPlayed) {
+            // Add each music track as an element of type NAMETRACK to the Document Builder.
+            documentBuilder.addElement(new Element.Builder().setType(ElementType.NAMETRACK).setValue(music).createElement());
+        }
+
+        return documentBuilder.createDocument();
+    }
+
+    /**
      * This method will create a document for User
      */
     public void createDocument() {
@@ -82,6 +100,13 @@ public class User {
      */
     public void creatDocumentPreferences() {
         this.documentPreferences = toDocumentPreferences();
+    }
+
+    /**
+     * This method will create a Document for the recently played music User
+     */
+    public void createDocumentRecentlyPlayed() {
+        this.documentRecentlyPlayed = toDocumentRecentlyPlayed();
     }
 
     /**
@@ -102,6 +127,16 @@ public class User {
         if (this.documentPreferences == null)
             this.documentPreferences = toDocumentPreferences();
         return this.documentPreferences;
+    }
+    
+    /**
+     * This method will return the Document created for the recently played music User verifying if this is not null
+     * @return document created
+     */
+    public Document getDocumentRecentlyPlayed() {
+        if (this.documentRecentlyPlayed == null)
+            this.documentRecentlyPlayed = toDocumentRecentlyPlayed();
+        return this.documentRecentlyPlayed;
     }
 
     public int getId() {
