@@ -67,9 +67,10 @@ public class UserMatcherTest {
         allMusics.add(getMusic4());
         allMusics.add(getMusic5());
 
-        //List<Document> recommendedUsers = userMatcher.getPreferencesRecommendation(getUser1(), tracks);
-        //userMatcher.printRecommendedSongs(recommendedUsers, tracks);
+        List<Document> recommendedUsers = userMatcher.getPreferencesRecommendation(getUser1(), tracks);
+        userMatcher.printRecommendedSongs(recommendedUsers, tracks);
 
+        System.out.println("RECCOMENDATIONS ACORDING TO RECENTLY PLAYED:");
         List<Document> recentlyPlayedRecommendation = userMatcher.getPreferencesRecentlyPlayed(getUser1(), tracks);
         userMatcher.printRecommendedSongs(recentlyPlayedRecommendation, tracks);
     }
