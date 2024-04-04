@@ -22,6 +22,7 @@ public class User {
     @JsonProperty("recently_played")
     private List<String> recentlyPlayed;
     private Document document;
+    private Document documentPreferences;
 
     public User(){
 
@@ -37,6 +38,7 @@ public class User {
         this.favoriteSongs = favoriteSongs;
         this.recentlyPlayed = recentlyPlayed;
         this.document = toDocument();
+        this.documentPreferences = toDocumentPreferences();
     }
 
     /**
@@ -44,20 +46,61 @@ public class User {
      *
      * @return Document converted
      */
-    public Document toDocument() {
+    private Document toDocument() {
         Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
 
         documentBuilder.addElement(new Element.Builder().setType(ElementType.AGE).setValue(this.age).createElement());
-        documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteGenres)).createElement());
-        documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteArtists)).createElement());
-        documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteSongs)).createElement());
-        documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.recentlyPlayed)).createElement());
+        documentBuilder.addElement(new Element.Builder().setType(ElementType.ARRAY).setValue(this.favoriteGenres).createElement());
+        documentBuilder.addElement(new Element.Builder().setType(ElementType.ARRAY).setValue(this.favoriteArtists).createElement());
 
         return documentBuilder.createDocument();
     }
 
+    /**
+     * This method converts the User class into a Document to be able to make Match.
+     * @return Document converted
+     */
+    private Document toDocumentPreferences() {
+        Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
+
+        documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteGenres)).createElement());
+        documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.favoriteArtists)).createElement());
+
+        return documentBuilder.createDocument();
+    }
+
+    /**
+     * This method will create a document for User
+     */
+    public void createDocument() {
+        this.document = toDocument();
+    }
+
+    /**
+     * This method will create a document for a preferences User
+     */
+    public void creatDocumentPreferences() {
+        this.documentPreferences = toDocumentPreferences();
+    }
+
+    /**
+     * This method will return the Document created verifying if this is not null
+     * @return document created
+     */
     public Document getDocument() {
+        if (this.document == null)
+            this.document = toDocument();
         return this.document;
+    }
+
+    /**
+     * This method will return the document created for preferences User verifying if this is not null
+     * @return document created
+     */
+    public Document getDocumentPreferences() {
+        if (this.documentPreferences == null)
+            this.documentPreferences = toDocumentPreferences();
+        return this.documentPreferences;
     }
 
     public int getId() {

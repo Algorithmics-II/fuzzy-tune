@@ -57,6 +57,15 @@ public class TokenizerFunction {
     }
 
     /**
+     * This method tokenizes an array of strings.
+     * @return A function that tokenizes an array of strings.
+     */
+    public static Function<Element<String>, Stream<Token<String>>> arrayTokenizer() {
+        return (element) -> Arrays.stream(element.getPreProcessedValue().split(" "))
+                .map(str -> new Token<String>(str, element));
+    }
+
+    /**
      * This method returns a function that tokenizes a string element into trigrams.
      *
      * @return A function that tokenizes a string element into trigrams.

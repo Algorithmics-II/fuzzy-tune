@@ -4,9 +4,11 @@ import org.example.fuzzy_matcher.component.Dictionary;
 import org.example.fuzzy_matcher.util.Utils;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.List;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * A functional interface to pre-process the elements. These function are applied to element.value String's
@@ -21,6 +23,18 @@ public class PreProcessFunction<T>{
      */
     public static Function<String, String> trim() {
         return (str) -> StringUtils.trim(str);
+    }
+
+    /**
+     * Uses Apache commons StringUtils lowerCase method and replaces "&" with "and" reusing the namePreprocessing function
+     * @return the function to perform toLowerCase
+     */
+    public static Function<List<String>, String> arrayPreprocessing() {
+        return (array) -> array.stream()
+                .map(str -> str.replace("&", "and"))
+                .map(String::toLowerCase)
+                .map(namePreprocessing())
+                .collect(Collectors.joining(" "));
     }
 
     /**
@@ -47,8 +61,9 @@ public class PreProcessFunction<T>{
      * @return the function to perform removeSpecialChars
      */
     public static Function<String, String> removeSpecialChars() {
-        return (str) -> str.replaceAll("[^A-Za-z0-9 ]+", "");
+        return (str) -> str.replaceAll(",", " ").replaceAll("[^A-Za-z0-9 ]+", "");
     }
+
 
     /**
      * Used for emails, remove everything after the '@' character
