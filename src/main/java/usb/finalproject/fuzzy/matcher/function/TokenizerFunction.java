@@ -103,6 +103,38 @@ public class TokenizerFunction {
     }
 
     /**
+     * Returns a function that tokenizes a string element into word-based n-grams.
+     * The function takes an Element<String> object and returns a Stream<Token<String>>.
+     *
+     * @return A function that tokenizes a string element into word-based n-grams.
+     */
+    public static Function<Element<String>, Stream<Token<String>>> wordBasedTokenizer() {
+        return (element) -> getTokenBasedNGrams(element);
+    }
+
+    
+    /**
+     * Generates word-based n-gram tokens from a string element.
+     * This method splits the string element into words and constructs n-gram tokens.
+     *
+     * @param element The string element to tokenize.
+     * @return A stream of word-based n-gram tokens.
+     */
+    public static Stream<Token<String>> getTokenBasedNGrams(Element element) {
+        Object elementValue = element.getPreProcessedValue();
+        String elementValueStr;
+        if (elementValue instanceof String) {
+            elementValueStr = (String) elementValue;
+        } else {
+            throw new MatchException("Unsupported data type");
+        }
+        
+        String[] words = elementValueStr.split("\\s+");
+        
+        return Utils.getNGrams(elementValueStr, words.length).map(str -> new Token<String>(str, element));
+    }
+
+    /**
      * This method returns a function that applies a chain of tokenizer functions to a string element.
      *
      * @param tokenizers The chain of tokenizer functions.

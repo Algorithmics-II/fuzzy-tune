@@ -38,6 +38,20 @@ public class PreProcessFunction<T>{
     }
 
     /**
+     * Replacing "&" with "and", removing special characters except alphanumeric characters and spaces, converting the name to lowercase, and reducing multiple consecutive spaces to a single space
+     * @return A Function that preprocesses a single music track name.
+     */
+    public static Function<String, String> NameTrackPreprocessing() {
+        return (str) -> {
+            str = str.replace("&", "and");
+            str = str.replaceAll("[^a-zA-Z0-9 ]", "");
+            str = str.toLowerCase();
+            str = str.replaceAll("\\s+", " ");
+            return str;
+        };
+    }
+
+    /**
      * Uses Apache commons StringUtils lowerCase method
      *
      * @return the function to perform toLowerCase

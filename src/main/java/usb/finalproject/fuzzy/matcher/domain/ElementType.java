@@ -21,7 +21,8 @@ public enum ElementType {
     NUMBER,
     DATE,
     AGE,
-    ARRAY;
+    ARRAY,
+    NAMETRACK;
 
     /**
      * This method returns the preprocessing function for this element type.
@@ -37,6 +38,7 @@ public enum ElementType {
             case PHONE -> usPhoneNormalization();
             case NUMBER, AGE -> numberPreprocessing();
             case ARRAY -> arrayPreprocessing();
+            case NAMETRACK -> NameTrackPreprocessing();
             default -> none();
         };
     }
@@ -54,6 +56,7 @@ public enum ElementType {
             case EMAIL -> triGramTokenizer();
             case PHONE -> decaGramTokenizer();
             case ARRAY -> arrayTokenizer();
+            case NAMETRACK -> wordBasedTokenizer();
             default -> valueTokenizer();
         };
     }
