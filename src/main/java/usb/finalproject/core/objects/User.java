@@ -24,6 +24,7 @@ public class User {
     private List<String> recentlyPlayed;
     private Document document;
     private Document documentPreferences;
+    private Document documentRecentlyPlayedUser;
 
     public User(){
 
@@ -70,6 +71,15 @@ public class User {
         return documentBuilder.createDocument();
     }
 
+    private Document toDocumentRecentlyMusic() {
+        Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
+
+        documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(String.join(" ", this.recentlyPlayed)).createElement());
+
+        return documentBuilder.createDocument();
+    }
+
+
     /**
      * This method will create a document for User
      */
@@ -103,6 +113,13 @@ public class User {
             this.documentPreferences = toDocumentPreferences();
         return this.documentPreferences;
     }
+
+    public Document getDocumentRecentlyPlayedUser() {
+        if (this.documentRecentlyPlayedUser == null)
+            this.documentRecentlyPlayedUser = toDocumentPreferences();
+        return this.documentRecentlyPlayedUser;
+    }
+
 
     public int getId() {
         return this.id;
