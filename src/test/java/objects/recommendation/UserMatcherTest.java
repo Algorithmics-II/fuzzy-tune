@@ -20,7 +20,7 @@ public class UserMatcherTest {
     private MatchService matchService;
 
     @Test
-    public void fiveUserRecommendation() {
+    public void fiveUserRecommendation() throws Exception {
         matchService = new MatchService();
         userMatcher = new UserMatcher(matchService);
 
@@ -28,8 +28,13 @@ public class UserMatcherTest {
         List<User> users = userList.getUsers();
 
         List<Document> recommendedUsers = userMatcher.getTopMatches(users.get(3).getDocument(), users, 5);
-        userMatcher.printRecommendedUsers(recommendedUsers, users);
-        System.out.println(recommendedUsers);
+        //userMatcher.printRecommendedUsers(recommendedUsers, users);
+        //System.out.println(recommendedUsers);
+
+        //MusicList musicList = DataReader.readMusicListFromJson("src/main/resources/tracks.json");
+        //List<Music> tracks = musicList.getTracks();
+        //userMatcher.getMusicRecomendationsWithSimilarUsers(recommendedUsers, tracks);
+
 
         // User 1 recommended: Mateo
         /*Assert.assertEquals("Mateo", users.get(2).getName());
@@ -47,6 +52,7 @@ public class UserMatcherTest {
         Assert.assertEquals(Arrays.asList("Here Without You", "It's Like That", "Apeman - 2014 Remastered Version", "You Can't Always Get What You Want"), users.get(1).getRecentlyPlayed());
         Assert.assertEquals(0.8169889330626028, userMatcher.getUserMatches().get(1).getScore().getResult(), 0.0001);*/
     }
+
 
     @Test
     public void recommendationOnPreferencesUser() throws Exception {
@@ -68,6 +74,8 @@ public class UserMatcherTest {
 
         List<Document> recommendedUsers = userMatcher.getPreferencesRecommendation(getUser1(), tracks);
         userMatcher.printRecommendedSongs(recommendedUsers, tracks);
+        List<Document> recentlyplayedRecomendation = userMatcher.getPreferencesRecentlyPlayed(getUser1(), tracks);
+        userMatcher.printRecommendedSongs(recentlyplayedRecomendation, tracks);
     }
 
     private User getUser1() {
