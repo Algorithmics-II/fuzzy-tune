@@ -115,7 +115,7 @@ public class Music {
     Document.Builder documentBuilder = new Document.Builder(String.valueOf(this.id));
 
     documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(this.artistGenres).createElement());
-    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(this.artistNames).createElement());
+    documentBuilder.addElement(new Element.Builder().setType(ElementType.TEXT).setValue(this.artistName).createElement());
 
     return documentBuilder.createDocument();
   }

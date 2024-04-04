@@ -22,7 +22,7 @@ public class Printer {
      */
     public static void printSong(Music music) {
         System.out.println("Song recommended: " + music.getTrackName());
-        System.out.println("Artist: " + music.getArtistNames());
+        System.out.println("Artist: " + music.getArtistName());
         System.out.println("Genres: " + music.getArtistGenres());
     }
 }
